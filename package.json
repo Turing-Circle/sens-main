@@ -17,8 +17,9 @@
   "author": "Zeeshan Al Abedin",
   "license": "MIT",
   "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.3",
-    "pg": "^6.x"
+    "pg": "6.x",
+    "ejs": "2.5.6",
+    "express": "4.15.3"
+    
   }
 }
