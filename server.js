@@ -28,7 +28,7 @@ app.get('/listUsers', function(req, res) {
 });
 
 //Database Service Calls
-app.get('/db', dn.getAllData);
+app.get('/db', db.getAllData);
 
 
 
