@@ -3,6 +3,9 @@ var app = express();
 var fs = require("fs");
 var pg = require('pg');
 
+//Require the database queries file
+var db = require('../queries');
+
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -16,26 +19,21 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+//Test API call
 app.get('/listUsers', function(req, res) {
     fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
        console.log( data );
        res.end( data );
    });
-})
-
-//Database Service
-app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT * FROM test_table', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.render('pages/db', {results: result.rows} ); }
-    });
-  });
 });
 
+//Database Service Calls
+app.get('/db', dn.getAllData);
+
+
+
+
+//Listening to port
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
