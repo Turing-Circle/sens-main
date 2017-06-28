@@ -30,7 +30,7 @@ app.get('/db', function (request, response) {
 
 app.get('/userdata', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  	var query = url.parse(request.url.query);
+  	var query = url.parse(request.url).query;
   	var uname = request.query.uname;
   	var pwd = request.query.pwd;
     client.query('SELECT product_id FROM userdata WHERE email = 'uname' & password = 'pwd'', function(err, result)  done();
