@@ -30,6 +30,14 @@ app.get('/db', function (request, response) {
 app.post('/userdata',function(req,res){
 var email = req.body.uname; // Getting the parameters
 var password = req.body.pwd;
+
+client.query('SELECT product_id FROM userdata WHERE email = 'email' & password = 'password' ', function(err, result)  done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result); }
+    });
+
 });
 
 
