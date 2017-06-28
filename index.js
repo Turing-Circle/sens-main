@@ -46,8 +46,6 @@ app.get('/userdata',function(request,response){
 });
 
 
-});
-
 
 
 app.listen(app.get('port'), function() {
