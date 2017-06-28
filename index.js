@@ -27,9 +27,11 @@ app.get('/db', function (request, response) {
 });
 
 
-app.post('/userdata',function(req,res){
-var email = req.body.uname; // Getting the parameters
-var password = req.body.pwd;
+app.get('/userdata',function(req,res){
+	
+	var query1 = url.parse(request.url.query);
+  	var uname = request.query1.uname;
+  	var pwd = request.query1.pwd;
 
  
 
