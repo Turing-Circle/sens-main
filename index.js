@@ -28,14 +28,11 @@ app.get('/db', function (request, response) {
 });
 
 
-app.get('/userdata',function(req,res){
+app.get('/userdata',function(request,res){
 	
 	var query1 = url.parse(request.url.query);
   	var uname = request.query1.uname;
   	var pwd = request.query1.pwd;
-
- 
-
 
 
 });
