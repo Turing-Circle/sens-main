@@ -31,6 +31,8 @@ app.get('/userdata',function(req,res){
 var email = req.body.uname; // Getting the parameters
 var password = req.body.pwd;
 
+console.log('Node app is running');
+
 });
 
 
