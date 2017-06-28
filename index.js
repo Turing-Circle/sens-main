@@ -33,7 +33,7 @@ app.get('/db', function (request, response) {
   	var uname1 = request.body.uname;
   	var pwd1 = request.body.pwd;
     
-    client.query('SELECT product_id FROM userdata WHERE name = uname1 ', function(err, result)  done();
+    client.query('SELECT product_id FROM userdata WHERE name = 'uname1' ', function(err, result)  done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
