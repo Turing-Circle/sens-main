@@ -31,11 +31,11 @@ app.post('/userdata',function(req,res){
 var email = req.body.uname; // Getting the parameters
 var password = req.body.pwd;
 
-client.query('SELECT product_id FROM userdata WHERE email = 'email' & password = 'password' ', function(err, result)  done();
+client.query('SELECT product_id FROM userdata WHERE email = 'uname' & password = 'pwd' ', function(err, result) {
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); res.send("Error " + err); }
       else
-       { response.send(result); }
+       { res.send(result); }
     });
 
 });
