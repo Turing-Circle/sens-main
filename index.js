@@ -36,7 +36,7 @@ app.get('/userdata',function(request,response){
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
-  	  client.query('SELECT product_id FROM userdata WHERE name = "shubham" ', function(err, result) {
+  	  client.query('SELECT product_id FROM userdata WHERE name = 'shubham' ', function(err, result) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
