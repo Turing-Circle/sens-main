@@ -31,15 +31,7 @@ app.get('/userdata',function(req,res){
 var email = req.body.uname; // Getting the parameters
 var password = req.body.pwd;
 
- pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT email,password,product_id FROM userdata where name = 'email' and password = 'password' ', function(err, result) {
-      done();
-      if (err)
-       { console.error(err); response.send("Error " + err); }
-      else
-       { response.send(result); }
-    });
-  });
+ 
 
 
 
