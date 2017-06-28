@@ -29,7 +29,7 @@ app.get('/db', function (request, response) {
 
 app.get('/userdata', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT username,password FROM userdata', function(err, result) {
+    client.query('SELECT email,password FROM userdata', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
