@@ -27,7 +27,7 @@ app.get('/db', function (request, response) {
 });
 
 
-app.get('/userdata',function(req,res){
+app.post('/userdata',function(req,res){
 var email = req.body.uname; // Getting the parameters
 var password = req.body.pwd;
 
