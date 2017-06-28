@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get("/getdata", function (request, response) {
-    console.log(req.body.user.name)
+    console.log(req.body.uname)
 });
 
 
