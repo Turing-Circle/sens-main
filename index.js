@@ -32,7 +32,7 @@ app.get('/userdata',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
-	var pass = query1.query.pass;
+	var pass = query1.query.pwd;
 	response.send(name);
 	response.send(pass);
 
