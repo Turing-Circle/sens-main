@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
+var url = require('url');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -29,8 +30,10 @@ app.get('/db', function (request, response) {
 
 app.get('/userdata', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query('SELECT email,password,product_id FROM userdata', function(err, result) {
-      done();
+  	var query = url.parse(request.url.query);
+  	var uname = request.query.uname;
+  	var pwd = request.query.pwd;
+    client.query('SELECT product_id FROM userdata WHERE email = 'uname' & password = 'pwd'', function(err, result)  done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
