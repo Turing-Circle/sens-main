@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var url = require('url');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -28,17 +27,16 @@ app.get('/db', function (request, response) {
 });
 
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-/**bodyParser.json(options)
- * Parses the text as JSON and exposes the resulting object on req.body.
- */
-app.use(bodyParser.json());
-
-app.get("/getdata", function (request, response) {
-    console.log(req.body.uname)
+app.get('/userdata', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT email,password,product_id FROM userdata', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result); }
+    });
+  });
 });
 
 
