@@ -34,6 +34,7 @@ app.get('/userdata',function(request,response){
 	var name = query1.query.uname;
 	var pass = query1.query.pass;
 	response.send(name);
+	response.send(pass);
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
