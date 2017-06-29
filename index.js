@@ -65,7 +65,7 @@ app.get('/signup',function(request,response){
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
-  	  client.query('SELECT product_id FROM userdata WHERE email = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
+  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+pass+'\' , \''+prodid+ '\'   ) ', function(err, result) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
