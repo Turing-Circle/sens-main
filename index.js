@@ -61,7 +61,7 @@ app.get('/signup',function(request,response){
 	var pass = query1.query.pwd;
 	var prodid = query1.query.pid;
 	
-	response.send(name+email+phone+location+pass+prodid);
+	//response.send(name+email+phone+location+pass+prodid);
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
