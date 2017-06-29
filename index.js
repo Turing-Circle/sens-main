@@ -36,8 +36,6 @@ app.get('/userdata',function(request,response){
 	var name = query1.query.uname;
 	var pass = query1.query.pwd;
 	
-	//response.send(name + pass);
-	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
   	  client.query('SELECT product_id FROM userdata WHERE email = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
@@ -61,7 +59,6 @@ app.get('/signup',function(request,response){
 	var pass = query1.query.pwd;
 	var prodid = query1.query.pid;
 	
-	//response.send(name+email+phone+location+pass+prodid);
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
