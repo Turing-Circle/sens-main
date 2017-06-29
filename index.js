@@ -51,6 +51,31 @@ app.get('/userdata',function(request,response){
 
 
 
+app.get('/signup',function(request,response){
+	
+	var query1 = url.parse(request.url, true);
+	var name = query1.query.name;
+	var email = query1.query.uname;
+	var phone = query1.query.phone;
+	var location = query1.query.loc;
+	var pass = query1.query.pwd;
+	var prodid = query1.query.pid;
+	
+	response.send(name+email+phone+location+pass+prodid);
+	
+	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  	
+  	  client.query('SELECT product_id FROM userdata WHERE email = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result); }
+    });
+  });
+});
+
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
