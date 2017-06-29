@@ -40,7 +40,7 @@ app.get('/userdata',function(request,response){
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
-  	  client.query('SELECT * FROM userdata WHERE name = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
+  	  client.query('SELECT * FROM userdata WHERE email = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
