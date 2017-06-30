@@ -73,7 +73,7 @@ app.get('/signup',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.name;
-	var email = query1.query.uname;
+	var email = (query1.query.uname).trim();
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
 	var pass = query1.query.pwd;
