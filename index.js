@@ -29,6 +29,7 @@ app.get('/db', function (request, response) {
   });
 });
 
+
 app.get('/getAllUser', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM userdata', function(err, result) {
