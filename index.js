@@ -43,10 +43,6 @@ app.get('/getAllUser', function (request, response) {
 });
 
 
-
-
-
-
 app.get('/userdata',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
