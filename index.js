@@ -103,6 +103,44 @@ app.get('/signup',function(request,response){
   });
 });
 
+// Inserting Sensor Data via GET
+app.get('/insertData', function (request, response) {
+var query1 = url.parse(request.url, true);
+  var product_id = query1.query.pid;
+  var temprature = query1.query.temp;
+  var humidity = query1.query.humid;
+  var powerOfHyd = query1.query.ph;
+  var co_leve = query1.query.co;
+  var light = query1.query.uv;
+
+
+   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('INSERT INTO test_table (product_id, temprature, humidity, ph, co_leve, light) VALUES ( \'' + product_id +'\' , \''+ temprature + ' \' , \' '+humidity+'\' , \''+ powerOfHyd+'\' , \''+co_leve+'\' , \''+light+ '\')', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result); }
+    });
+  });
+});
+
+/* Inserting Sensor Data via POST
+app.post('/insertData', function (request, response) {
+
+
+   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(' // Query // ', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.send(result); }
+    });
+  });
+});
+*/
+
 
 
 
