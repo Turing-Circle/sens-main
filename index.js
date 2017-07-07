@@ -106,6 +106,9 @@ app.get('/signup',function(request,response){
 
 
 app.get('/forgotPassword', function(request, response) {
+	ar query1 = url.parse(request.url, true);
+	var name = query1.query.uname;
+
   response.render('pages/resetPassword');
 });
 
