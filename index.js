@@ -110,7 +110,7 @@ app.get('/forgotPassword', function(request, response) {
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
 
-  response.render('pages/resetPassword' , name);
+  response.render('pages/resetPassword');
 });
 
 
