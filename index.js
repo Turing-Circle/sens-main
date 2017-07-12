@@ -46,7 +46,7 @@ app.get('/getAllUser', function (request, response) {
 app.get('/userdata',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
-	var name = query1.query.uname;
+	var name = query1.query.uname.trim();
 	var pass = query1.query.pwd;
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -104,7 +104,7 @@ app.get('/signup',function(request,response){
 });
 
 
-
+//for sending email
 app.get('/forgotPassword', function(request, response) {
 
 	var query1 = url.parse(request.url, true);
@@ -118,6 +118,24 @@ app.get('/forgotPassword', function(request, response) {
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('pages/resetPassword', {results: result.rows} ); }
+    });
+  });
+});
+
+
+//for replacing password in database
+app.get('/updatepassword', function(request, response) {
+
+  var query1 = url.parse(request.url, true);
+  var name = query1.query.uname;
+  var pass = query1.query.pass;
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    
+      client.query('UPDATE userdata SET password = \'' + pass +'\ WHERE email = \'' + name +'\' ', function(err, result) {
+        done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
     });
   });
 });
