@@ -46,7 +46,7 @@ app.get('/getAllUser', function (request, response) {
 app.get('/userdata',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
-	var name = query1.query.uname.trim();
+	var name = query1.query.uname;
 	var pass = query1.query.pwd;
 	
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
