@@ -109,10 +109,6 @@ app.get('/forgotPassword', function(request, response) {
 
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
-  
-  function setValue(value) {
-  someVar = value;
-  }
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
   	
@@ -122,6 +118,7 @@ app.get('/forgotPassword', function(request, response) {
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('pages/resetPassword', {results: result.rows} );
+         window.localStorage.setItem("myInfo", result.rows);
        }
     });
   });
