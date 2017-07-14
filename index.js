@@ -121,7 +121,7 @@ app.get('/forgotPassword', function(request, response) {
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('pages/resetPassword', {results: result.rows} );
-          setValue(results);
+          setValue(result.rows);
        }
     });
   });
