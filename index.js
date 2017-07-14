@@ -109,6 +109,7 @@ app.get('/forgotPassword', function(request, response) {
 
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
+  
   function setValue(value) {
   someVar = value;
   }
@@ -121,7 +122,7 @@ app.get('/forgotPassword', function(request, response) {
        { console.error(err); response.send("Error " + err); }
       else
        { response.render('pages/resetPassword', {results: result.rows} );
-          setValue(result.rows);
+          localStorage.setItem("email_address",result.rows);
        }
     });
   });
