@@ -203,6 +203,10 @@ app.post('/insertData', function (request, response) {
 });
 */
 
+app.get('/resetSuccess', function(request, response) {
+  response.render('pages/resetSuccess');
+});
+
 
 
 
