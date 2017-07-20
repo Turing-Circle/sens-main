@@ -43,7 +43,7 @@ app.get('/getAllUser', function (request, response) {
 });
 
 
-app.get('/userdata',function(request,response){
+app.get('/login',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
@@ -63,7 +63,7 @@ app.get('/userdata',function(request,response){
 
 
 
-app.get('/validate',function(request,response){
+app.get('/check',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
@@ -99,7 +99,7 @@ app.get('/sensordata', function (request, response) {
 
 
 
-app.get('/signup',function(request,response){
+app.get('/register',function(request,response){
 	
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.name;
