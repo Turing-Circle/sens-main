@@ -38,23 +38,17 @@
 
                  if (n == 0)
                  {
-                    
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
-        xhr.send();
-        alert("Sign Up Successfull !\n Redirecting to Login Page");
-        window.open("https://sens-agriculture.herokuapp.com/loginForm");
-        window.close();
-
-
+                 var xhr = new XMLHttpRequest();
+                 xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
+                 xhr.send();
+                 alert("Thank you for signing up !\n Redirecting you to the Login Page");
+                 window.open("https://sens-agriculture.herokuapp.com/loginForm");
+                 window.close();
                  }
-
-
-
-
-
-
+                 else
+                {
+                alert("Password's don't match, please try again !");
+                }
              
             }
             
@@ -63,10 +57,7 @@
     </head>
     
     <body>
-       
-        
             <img src="sens.png">
-      
         
         <div id="login">
             <form name='form-login'>
@@ -85,7 +76,7 @@
                 <input type="password" id="pwd" placeholder="Password" required>
                 <span class="fontawesome-lock"></span>
                 <input type="password" id="cpwd" placeholder="Confirm Password" required> <br>
-                <input type="checkbox" name="tnc" required> <br> By clicking on Sign Up, you agree to the our Terms and Conditions.
+                <input type="checkbox" name="tnc" value ="shit" required> <br> By clicking on Sign Up, you agree to the our Terms and Conditions.
           
              <button onClick=validReg()><div id="ss"><strong>SIGN UP</strong></div></button>
              <button ><div id="ss"><strong>OR LOGIN</strong></div></button>
