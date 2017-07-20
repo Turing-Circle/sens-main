@@ -30,8 +30,26 @@
                  var ph = document.getElementById("mob").value;
                  var loc = document.getElementById("loc").value;
                  var pass = document.getElementById("pwd").value;
+                 var cpass = document.getElementById("cpwd").value;
                  var pid = document.getElementById("email").value;
                  
+                 var n = pass.localeCompare(cpass);
+
+                 if (n == 0)
+                 {
+                    
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
+        xhr.send();
+        alert("Sign Up Successfull !\n Redirecting to Login Page");
+        window.open("https://sens-agriculture.herokuapp.com/loginForm");
+        window.close();
+
+
+                 }
+
+
 
 
 
@@ -65,7 +83,7 @@
 
                 <input type="password" id="pwd" placeholder="Password" required>
                 <span class="fontawesome-lock"></span>
-                <input type="password" id="mobile" placeholder="Confirm Password" required>
+                <input type="password" id="cpwd" placeholder="Confirm Password" required>
                 <input type="checkbox" name="tnc" required> <br> By clicking on Sign Up, you agree to the our Terms and Conditions.
           
              <button onClick=validReg()><div id="ss"><strong>SIGN UP</strong></div></button>
