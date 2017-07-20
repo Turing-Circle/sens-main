@@ -21,7 +21,19 @@
             
         <script>
             
-            function loadDoc() {
+            function validReg() {
+
+                // Name, Email, Phone, Location, Password, PID
+
+                 var fn = document.getElementById("fname").value;
+                 var em = document.getElementById("email").value;
+                 var ph = document.getElementById("mob").value;
+                 var loc = document.getElementById("loc").value;
+                 var pass = document.getElementById("pwd").value;
+                 var pid = document.getElementById("email").value;
+                 
+
+
 
 
              
@@ -56,10 +68,11 @@
                 <input type="password" id="mobile" placeholder="Confirm Password" required>
                 <input type="checkbox" name="tnc" required> <br> By clicking on Sign Up, you agree to the our Terms and Conditions.
           
+             <button onClick=validReg()><div id="ss"><strong>SIGN UP</strong></div></button>
+             <button ><div id="ss"><strong>OR LOGIN</strong></div></button>
 
             </form>
-             <button onClick=loadDoc()><div id="ss"><strong>SIGN UP</strong></div></button>
-             <button ><div id="ss"><strong>OR LOGIN</strong></div></button>
+            
         </div>
         
        <!-- <form>
