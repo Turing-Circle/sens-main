@@ -1,95 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>SenS Login</title>
-<% include ../partials/header.ejs %> 
-<style type="text/css">
     
-            .banner {
-            background-color : #3aafa9;
-            overflow : hidden;
-        }
-    .form{
-        font-size : 200%;
-    }
+    <head>
+     
+        <link rel="stylesheet" href="css/style.css">
+        <style>
+        
+            img {
+                
+                width: 20%;
+                height: 20%;
+                margin-left: 41%;
+                margin-top: 7%;
+            
+            
     
-    .form input {
-                font-family: "Roboto", sans-serif;
-                outline: 0;
-                background: #f2f2f2;
-                border: 0;
-                margin-bottom: 67px;
-                padding: 15px;
-                box-sizing: border-box;
-                font-size: 16px;
             }
-    .form button {
-                font-family: "Roboto", sans-serif;
-                text-transform: uppercase;
-                outline: 0;
-                background: #3AAFA9;
-                width: 30%;
-                border: 0;
-                padding: 15px;
-                color: #FFFFFF;
-                font-size: 14px;
-                -webkit-transition: all 0.3 ease;
-                transition: all 0.3 ease;
-                cursor: pointer;
+            #ss{
+                color: #26ae90;
             }
-    .form button:hover,.form button:active,.form button:focus {
-                background: #2B7A78;
-;
+            
+        </style>
+            
+        <script>
+            
+            function loadDoc() {
+                var f_email = document.getElementById("email").value;
+                var f_password = document.getElementById("password").value;
+                
+                var i = 0;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
+                       for(i=0;i<jsonObj.rows.length;i++){
+                            //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +       jsonObj.rows[i].product_id+"</td></tr>");
+                           var pid = jsonObj.rows[i].product_id;
+                           localStorage.setItem("user_id",pid);
+                           window.location.href = "page2.html";
+                        
+                       }
+                        
+                    }
+                };
+                xhttp.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
+                xhttp.send();
+                
             }
-        
-        .header {
-            background-color : #3aafa9;
-            color : white;
-            font-family : verdana;
-        }
-        
-        #logo {
-            margin-bottom : 0;
-            padding-left : 1em;
-            font-family : verdana;
-            font-size : 180%;
-            font-weight : Bold;
-            word-spacing : 0.2em;
-        }
-        
-        #agri{
-            letter-spacing : 0.25em;
-            font-weight : normal;
-            color : #17252a;
-           
-        }
-        
-        #moto {
-            margin-top : 0;
-            padding-left : 2em;
-        }
-
-</style>
-</head>
-
-<body align = "center">
-
-<div class="banner">
-<div class="header">
-    <p id="logo">SenS <span id="agri">Intelligent and Automated Agriculture</span> </p>
-    <p id="moto"> Login Page</p>
- </div>
- </div>    
-<img src="sens.png" width="25%" height="50%">
-<div class="form">
-
+            
+            
+        </script>
+    </head>
     
-    <br><br> Email Address &nbsp; <input type="text" name="email" id="email">
-    <br> Password &nbsp; <input type="password" name="Password" id="pass"><br>
-    <button onClick=myFunction()>Login</button>
+    <body>
+       
+        
+            <img src="sen.png">
+      
+        
+        <div id="login">
+            <form name='form-login'>
+                <span class="fontawesome-user"></span>
+                <input type="text" id="email" placeholder="Email">
+       
+                <span class="fontawesome-lock"></span>
+                <input type="password" id="password" placeholder="Password">
+          
+               
 
+            </form>
+             <button onClick=loadDoc()><div id="ss"><strong>LOGIN</strong></div></button>
+        </div>
+        
+       <!-- <form>
+            <input type="text" placeholder="Email" id="email">
+            <input type="text" placeholder="Password" id="password">
+        
+        </form>-->
+        
+            
 
-</div>
+    </body>
     
-</body>
 </html>
