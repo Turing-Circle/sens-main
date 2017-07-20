@@ -211,6 +211,9 @@ app.get('/loginForm', function(request, response) {
   response.render('pages/loginForm');
 });
 
+app.get('/signUp', function(request, response) {
+  response.render('pages/signUp');
+});
 
 
 app.listen(app.get('port'), function() {
