@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     
-    <head>
+    <head><title>Login</title>
      
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
@@ -11,7 +11,7 @@
                 width: 20%;
                 height: 20%;
                 margin-left: 41%;
-                margin-top: 7%;
+                margin-top: 2%;
             
             
     
@@ -46,6 +46,7 @@
                 };
                 xhttp.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
+                alert("2");
             }
             
             
@@ -70,6 +71,7 @@
 
             </form>
              <button onClick=loadDoc()><div id="ss"><strong>LOGIN</strong></div></button>
+             <button ><div id="ss"><strong>SIGN UP</strong></div></button>
         </div>
         
        <!-- <form>
