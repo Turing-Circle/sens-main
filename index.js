@@ -13,7 +13,7 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  response.render('pages/loginform');
 });
 
 
@@ -206,11 +206,6 @@ app.post('/insertData', function (request, response) {
 app.get('/resetSuccess', function(request, response) {
   response.render('pages/resetSuccess');
 });
-
-app.get('/loginForm', function(request, response) {
-  response.render('pages/loginForm');
-});
-
 
 
 
