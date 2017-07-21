@@ -1,24 +1,17 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
 var pg = require('pg');
 var url = require('url');
 
-app.set('port', (process.env.PORT || 5000));
 
+app.set('port', (process.env.PORT || 5000));
+app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-
-
-//Allow Cross Domain Requests 
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
- });
 
 
 app.get('/', function(request, response) {
