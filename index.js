@@ -215,6 +215,10 @@ app.get('/signUp', function(request, response) {
   response.render('pages/signUp');
 });
 
+app.get('/visual', function(request, response) {
+  response.render('pages/visual');
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
