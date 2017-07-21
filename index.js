@@ -12,6 +12,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
+//Allow Cross Domain Requests 
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
+
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
