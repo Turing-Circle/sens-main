@@ -166,7 +166,7 @@ app.get('/updatepassword', function(request, response) {
 
 
 // Inserting Sensor Data via GET
-//Sanfoth
+// SANJOTH'S DECLARATIONS HERE
 // https://sens-agriculture.herokuapp.com/insertData?pid=p1337&temp=23&humid=70&ph=30&co=111&uv=11
 app.get('/insertData', function (request, response) {
 var query1 = url.parse(request.url, true);
