@@ -215,7 +215,7 @@ app.get('/signUp', function(request, response) {
   response.render('pages/signUp');
 });
 
-app.get('/visual', function(request, response) {
+app.get('/visual.ejs', function(request, response) {
   response.render('pages/visual');
 });
 
