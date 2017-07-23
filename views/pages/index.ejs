@@ -1,42 +1,66 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-<title> SenS </title>
-<% include ../partials/header.ejs %> 
+	<head>
+		<title>Eventually by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/stylesheets/mission_control/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
 
-</head>
+		<!-- Header -->
+			<header id="header">
+			<img src="sens.png" width="20%" height="20%" style="margin-left:40%;">
+				<p style="text-align: center;">
+				 <a href="">MISSION CONTROL</a></p>
 
-<body style="position: absolute;left: 50%; transform: translateX(-50%)"> 
-</head>
+			</header>
 
-<body style="position: absolute;left: 50%; transform: translateX(-50%)"> 
+			<div id="sanjoth" style="text-align: center;">
+			<!-- transparent buttons -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<form target="_blank" method="get" action="/progress">
+    <button type="submit">View Team Progress</button>
+</form>
 
-<img src="sens.png" width="70%" height="50%" style="margin-left:15%;">
+<form target="_blank" method="get" action="/loginForm">
+    <button type="submit">Login</button>
+</form>
 
-<!--  <h1 style="text-align: center;"> SenS </h1> -->
-<h1> Intelligent and Automated Agriculture </h1> <br>
-    <ul>
-	<li> Project Specs &#10004; </li>
-	<li> Hardware Monitoring Section &#10004; </li>
-	<li> Designing a Cloud DataBase Schema for sensor data &#10004; </li>
-	<li> SenS App Connectivity with the Cloud &#10004; </li>
-	<li> SenS App Functions <br><progress value="50" max="100">
-</progress></li>
-	<li> Data Visualization with Actual data on Android &#10004;</li>
-<li> Data Visualization with Actual data on Web &#10004; </li>
-    <li> Software Connectivity with the Cloud &#10004;</li>
-    <li> Hardware Connectivity with the Cloud  <br> <progress value="90" max="100">
-</progress></li>
-    <li> Optimization & Integrity Checks <br><progress value="20" max="100">
-</progress></li>
-	<li> Data Analysis <br><progress value="0" max="100">
-</progress></li>
-<li> Optimized REST APIs for responding to requests  <br><progress value="75" max="100">
-</progress></li>
+<form target="_blank" method="get" action="/signUp">
+    <button type="submit">Register</button>
+</form>
+
+<form target="_blank" method="get" action="/dB">
+    <button type="submit">View Data</button>
+</form>
+
+
+
+			</div>
+			<br><br><br><br>
+
 	
-    </ul>
 
-    </body>
+		<!-- Footer -->
+			<footer id="footer">
+
+				<ul class="icons">
+				
+					<li><a target="_blank" href="mailto:sensagriculture@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						<li><a target="_blank" href="https://github.com/Turing-Circle" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Team SenS</li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/stylesheets/mission_control/main.js"></script>
+
+	</body>
 </html>
