@@ -3331,7 +3331,9 @@ header.major {
 
 /* Landing */
 
-	body.landing #page-wrapper {
+	body.landing #banner,
+	body.landing #page-wrapper,
+	body.landing .wrapper.style4 {
 		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images_progress/banner.jpg");
 		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images_progress/banner.jpg");
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images_progress/banner.jpg");
