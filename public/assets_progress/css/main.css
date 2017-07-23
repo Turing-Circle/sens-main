@@ -1622,7 +1622,7 @@
 		header.major h2, header.major h3, header.major h4, header.major h5, header.major h6 {
 			border-bottom: solid 2px #fff;
 			display: inline-block;
-			padding-bottom: 1em;
+			padding-bottom: 0em;
 			position: relative;
 		}
 
@@ -3134,7 +3134,7 @@
 		-ms-transition: opacity 0.5s ease;
 		transition: opacity 0.5s ease;
 		opacity: 1;
-		padding-top: 2em;
+		padding-top: 0em;
 	}
 
 		#page-wrapper:before {
