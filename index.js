@@ -221,6 +221,11 @@ app.get('/visual.ejs', function(request, response) {
   response.render('pages/visual');
 });
 
+app.get('/progress', function(request, response) {
+  response.render('pages/progress');
+});
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
