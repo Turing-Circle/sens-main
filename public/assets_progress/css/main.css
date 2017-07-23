@@ -19,7 +19,7 @@
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-		display: block;
+		display: inline-block;
 	}
 
 	body {
@@ -74,7 +74,7 @@
 
 	.row:after, .row:before {
 		content: '';
-		display: block;
+		display: inline-block;
 		clear: both;
 		height: 0;
 	}
@@ -1575,7 +1575,7 @@
 	}
 
 		pre code {
-			display: block;
+			display: inline-block;
 			line-height: 1.75em;
 			padding: 1em 1.5em;
 			overflow-x: auto;
@@ -1628,7 +1628,7 @@
 
 			header.major h2:after, header.major h3:after, header.major h4:after, header.major h5:after, header.major h6:after {
 				content: '';
-				display: block;
+				display: inline-block;
 				height: 1px;
 			}
 
@@ -1661,7 +1661,7 @@
 
 	label {
 		color: #fff;
-		display: block;
+		display: inline-block;
 		font-size: 0.9em;
 		font-weight: 600;
 		margin: 0 0 1em 0;
@@ -1680,7 +1680,7 @@
 		border-radius: 3px;
 		border: none;
 		color: inherit;
-		display: block;
+		display: inline-block;
 		outline: 0;
 		padding: 0 1em;
 		text-decoration: none;
@@ -1705,7 +1705,7 @@
 
 	.select-wrapper {
 		text-decoration: none;
-		display: block;
+		display: inline-block;
 		position: relative;
 	}
 
@@ -1725,7 +1725,7 @@
 			pointer-events: none;
 			color: #fff;
 			content: '\f078';
-			display: block;
+			display: inline-block;
 			height: 2.75em;
 			line-height: 2.75em;
 			position: absolute;
@@ -1756,7 +1756,7 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		display: block;
+		display: inline-block;
 		float: left;
 		margin-right: -2em;
 		opacity: 0;
@@ -1944,7 +1944,7 @@
 
 		.image img {
 			border-radius: 3px;
-			display: block;
+			display: inline-block;
 		}
 
 		.image.left {
@@ -1968,7 +1968,7 @@
 			}
 
 		.image.fit {
-			display: block;
+			display: inline-block;
 			margin: 0 0 2em 0;
 			width: 100%;
 		}
@@ -2066,7 +2066,7 @@
 			}
 
 			ul.actions.vertical li {
-				display: block;
+				display: inline-block;
 				padding: 1.5em 0 0 0;
 			}
 
@@ -2115,7 +2115,7 @@
 			@media screen and (max-width: 736px) {
 
 				ul.actions li {
-					display: block;
+					display: inline-block;
 					padding: 1em 0 0 0;
 					text-align: center;
 					width: 100%;
@@ -2282,7 +2282,7 @@
 		input[type="button"].fit,
 		button.fit,
 		.button.fit {
-			display: block;
+			display: inline-block;
 			margin: 0 0 1em 0;
 			width: 100%;
 		}
@@ -2380,7 +2380,7 @@
 
 		.features li {
 			padding: 4em 4em 2em 6em ;
-			display: block;
+			display: inline-block;
 			position: relative;
 			text-align: left;
 			width: 50%;
@@ -2427,7 +2427,7 @@
 			}
 
 			.features li:before {
-				display: block;
+				display: inline-block;
 				color: #00ffcc;
 				position: absolute;
 				left: 1.75em;
@@ -2581,7 +2581,7 @@
 		@media screen and (max-width: 980px) {
 
 			.spotlight {
-				display: block;
+				display: inline-block;
 			}
 
 				.spotlight br {
@@ -3140,7 +3140,7 @@
 		#page-wrapper:before {
 			background: transparent;
 			content: '';
-			display: block;
+			display: inline-block;
 			display: none;
 			height: 100%;
 			left: 0;
@@ -3193,7 +3193,7 @@
 				#menu ul > li > a {
 					border: 0;
 					color: inherit;
-					display: block;
+					display: inline-block;
 					font-size: 0.8em;
 					letter-spacing: 0.225em;
 					outline: 0;
@@ -3215,7 +3215,7 @@
 			background-repeat: no-repeat;
 			border: 0;
 			cursor: pointer;
-			display: block;
+			display: inline-block;
 			height: 3em;
 			position: absolute;
 			right: 0;
@@ -3237,7 +3237,7 @@
 	}
 
 		body.is-menu-visible #page-wrapper:before {
-			display: block;
+			display: inline-block;
 		}
 
 	body.is-menu-visible #menu {
@@ -3278,7 +3278,7 @@
 
 			#header h1 a {
 				border: 0;
-				display: block;
+				display: inline-block;
 				height: inherit;
 				line-height: inherit;
 			}
@@ -3314,7 +3314,7 @@
 					#header nav > ul > li > a {
 						border: 0;
 						color: #fff;
-						display: block;
+						display: inline-block;
 						font-size: 0.8em;
 						letter-spacing: 0.225em;
 						padding: 0 1.5em;
@@ -3424,7 +3424,7 @@
 				transition-delay: 0.25s;
 				background: #fff;
 				content: '';
-				display: block;
+				display: inline-block;
 				height: 2px;
 				position: absolute;
 				width: 100%;
@@ -3487,7 +3487,7 @@
 				background-size: contain;
 				bottom: 4em;
 				content: '';
-				display: block;
+				display: inline-block;
 				height: 1.5em;
 				left: 50%;
 				margin: 0 0 0 -0.75em;
@@ -3510,7 +3510,7 @@
 			transition-delay: 1.25s;
 			content: '';
 			background: #2e3842;
-			display: block;
+			display: inline-block;
 			width: 100%;
 			height: 100%;
 			position: absolute;
@@ -3599,7 +3599,7 @@
 		@media screen and (max-width: 980px) {
 
 			#cta .inner {
-				display: block;
+				display: inline-block;
 				text-align: center;
 			}
 
@@ -3752,7 +3752,7 @@
 
 					#footer .copyright li {
 						border: 0;
-						display: block;
+						display: inline-block;
 						line-height: 1.65em;
 						margin: 0;
 						padding: 0.5em 0;
