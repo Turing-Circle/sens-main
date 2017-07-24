@@ -37,7 +37,8 @@
                         var jsonObj = JSON.parse(this.responseText);
 
                            var pid = jsonObj.rows[0].email; // OUTPUT = PID ONLY
-                           if (pid == f_email)
+                           localStorage.setItem("user_id",pid);
+                           if (user_id == f_email)
                            {
                              // ADD MAIL HERE @ SHUBHAM RAI
                              alert("Please check your mail for resetting the password \n Thank you.");
