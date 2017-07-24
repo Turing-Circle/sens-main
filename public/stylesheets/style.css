@@ -6,7 +6,7 @@
 }
 
 body {
-  background : login.png
+  background-image: url(login.png);
   font: 87.5%/1.5em 'Open Sans', sans-serif;
   margin: 0;
 }
