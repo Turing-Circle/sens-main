@@ -37,11 +37,14 @@
                         var jsonObj = JSON.parse(this.responseText);
 
                            var pid = jsonObj.rows[0].email; // OUTPUT = PID ONLY
-
-                           localStorage.setItem("user_id",pid);
-                           alert(pid);
-                           // ADD MAIL HERE @ SHUBHAM RAI
-                           alert("Please check your mail for resetting the password \n Thank you.");
+                           if (pid == f_email)
+                           {
+                             // ADD MAIL HERE @ SHUBHAM RAI
+                             alert("Please check your mail for resetting the password \n Thank you.");
+                           }
+                           else {
+                             alert("The email address you entered is not registered with us.\n Please check your credentials again!");
+                           }
 
                     }
 
