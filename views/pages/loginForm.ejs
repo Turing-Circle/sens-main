@@ -29,9 +29,25 @@
                 var f_email = document.getElementById("email").value;
                   if (f_email != "")
                   {
+                    var xh = new XMLHttpRequest();
+                    xh.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                        var jsonObj = JSON.parse(xh.responseText);
+                       for(i=0;i<jsonObj.rows.length;i++){
+                            //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +       jsonObj.rows[i].product_id+"</td></tr>");
+                           var pid = jsonObj.rows[i].product_id; // OUTPUT = PID ONLY
+                           localStorage.setItem("user_id",pid);
+                           // ADD MAIL HERE @ SHUBHAM RAI
+                           alert("Please check your mail for resetting the password \n Thank you.");
 
-                  window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
-                  window.close();
+                      }
+                    };
+                    xh.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
+                    xh.send();
+
+                      //window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
+                      //window.close();
                   }
                   else {
                   alert("Please enter your email address in the Email field");
