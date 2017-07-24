@@ -1,16 +1,16 @@
 
-<html>  
-    
-    <head><title>D3</title>
-        
+<html>
+
+    <head><title>D3 Visualization - SenS </title>
+
         <!-- <link href="c3/c3.css" rel="stylesheet"> sadsd -->
         <link rel="stylesheet" href="/stylesheets/c3/c3.css">
-        
-        
-        
-        
+
+
+
+
         <style>
-            
+
             .temp_chart div {
                 font: 10px sans-serif;
                 background-color: steelblue;
@@ -35,17 +35,17 @@
                 margin: 1px;
                 color: white;
             }
-               
+
         </style>
-        
+
         <!-- D3 Script declarations -->
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <!-- <script src="c3/c3.min.js"></script> -->
         <script src="/stylesheets/c3/c3.min.js"></script>
-    
-        
+
+
         <script type="text/javascript">
-            
+
             var user_id = localStorage.getItem("user_id");
             var tempArr = [];
             var tempArr_6 = [];
@@ -53,8 +53,8 @@
             var humArr_6 = [];
             var coArr = [];
             var coArr_6 = [];
-            
-            function loadDoc2() {      
+
+            function loadDoc2() {
                 var i = 0;
                 var j = 0;
                 var xhttp = new XMLHttpRequest();
@@ -62,38 +62,38 @@
                     if (this.readyState == 4 && this.status == 200) {
                         var jsonObj = JSON.parse(xhttp.responseText);
                        for(i=1;i<=jsonObj.rows.length;i++){
-                            //document.writeln("<tr><td><b>Temp:</b></td><td width = 50>" +       jsonObj.rows[i].temprature+"</td></tr>");  
+                            //document.writeln("<tr><td><b>Temp:</b></td><td width = 50>" +       jsonObj.rows[i].temprature+"</td></tr>");
                            tempArr.push(jsonObj.rows[i-1].temprature);
                            humArr.push(jsonObj.rows[i-1].humidity);
                            coArr.push(jsonObj.rows[i-1].co_leve);
-     
+
                        }
                         if(tempArr.length >= 12){
                             for(j=tempArr.length-12;j<tempArr.length;j++){
                                 tempArr_6.push(tempArr[j]);
                                 humArr_6.push(humArr[j]);
                                 coArr_6.push(coArr[j]);
-                            }       
+                            }
                         }
                         else{
                             for(j=0;j<tempArr.length;j++){
                                 tempArr_6.push(tempArr[j]);
                                 humArr_6.push(humArr[j]);
                                 coArr_6.push(coArr[j]);
-                            }   
+                            }
                         }
                     }
-                    
+
                 };
                 xhttp.open("GET", "http://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
                 xhttp.send();
                 setTimeout(function(){
                     loadDoc3();
-                },  1500);    
-            
-                
+                },  1500);
+
+
             }
-            
+
             function loadDoc3(){
                /*var i = 0;
                 for(i=0;i<tempArr.length;i++){
@@ -106,8 +106,8 @@
                     .enter()
                     .append("div")
                     .style("width", function(d) { return d + "px"; })
-                    .text(function(d) { return d; });      
-                
+                    .text(function(d) { return d; });
+
                 d3.select(".hum_chart")
                     .selectAll("div")
                     .data(humArr_6)
@@ -115,19 +115,19 @@
                     .append("div")
                     .style("width", function(d) { return d + "px"; })
                     .text(function(d) { return d; }); */
-                
+
                 //C3 Code
-              
+
                 var chart_temp = c3.generate({
                     bindto: '.temp_chart',
                     data: {
                         columns: [
-                        tempArr_6  
-                          
+                        tempArr_6
+
                         ]
-                    }   
+                    }
                 });
-                
+
                 var chart_hum = c3.generate({
                     bindto: '.hum_chart',
                     data: {
@@ -136,24 +136,24 @@
                         ]
                     }
                 });
-                
+
                 var chart_temp = c3.generate({
                     bindto: '.co_chart',
                     data: {
                         columns: [
-                        coArr_6  
-                          
+                        coArr_6
+
                         ]
-                    }   
+                    }
                 });
             }
-                
+
         </script>
-    
-    
+
+
     </head>
     <body>
-        
+
         <button type="button" onclick="loadDoc2()">Get Visulization</button>
         <!--<button type="button" onclick="loadDoc3()">Get Array</button>-->
         <h4>TEMPERATURE</h4>
@@ -162,7 +162,7 @@
         <div class="hum_chart"></div>
         <h4>CO Level</h4>
         <div class="co_chart"></div>
-        
+
     </body>
 
 
