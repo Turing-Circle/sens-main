@@ -34,14 +34,13 @@
                       if (this.readyState == 4 && this.status == 200) {
                       //  alert(this.responseText);
 
-                        var jsonObj = JSON.parse(xh.responseText);
+                        var jsonObj = JSON.parse(this.responseText);
                        for(i=0;i<jsonObj.rows.length;i++){
 
                            var pid = jsonObj.rows[i].product_id; // OUTPUT = PID ONLY
 
                            localStorage.setItem("user_id",pid);
                            alert(pid);
-                           alert(user_id);
                            // ADD MAIL HERE @ SHUBHAM RAI
                            alert("Please check your mail for resetting the password \n Thank you.");
 
