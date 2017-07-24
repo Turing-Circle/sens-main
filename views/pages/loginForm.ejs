@@ -43,6 +43,11 @@
 
                 var f_password = document.getElementById("password").value;
 
+                if( f_email == "" || f_password == "")
+                {
+                  alert("Please check your credentials as one or more fields have been left blank");
+                  return false;
+                }
                 var i = 0;
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
