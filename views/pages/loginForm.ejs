@@ -32,19 +32,20 @@
                     var xh = new XMLHttpRequest();
                     xh.onreadystatechange = function() {
                       if (this.readyState == 4 && this.status == 200) {
-                        alert(this.responseText);
+                      //  alert(this.responseText);
 
                         var jsonObj = JSON.parse(xh.responseText);
                        for(i=0;i<jsonObj.rows.length;i++){
 
-                            //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +       jsonObj.rows[i].product_id+"</td></tr>");
                            var pid = jsonObj.rows[i].product_id; // OUTPUT = PID ONLY
+                           alert(pid);
                            localStorage.setItem("user_id",pid);
                            // ADD MAIL HERE @ SHUBHAM RAI
                            alert("Please check your mail for resetting the password \n Thank you.");
 
                       }
                     }
+
 
 
                       //window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
