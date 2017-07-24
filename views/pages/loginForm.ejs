@@ -20,7 +20,7 @@
         </style>
 
         <script>
-              
+
               function transfer(){
                 window.open("https://sens-agriculture.herokuapp.com/signUp");
                 window.close();
@@ -40,8 +40,11 @@
 
                            var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
 
+                          //do something here to send a http request and we will do it tommorow
+                          
                            if (rc == 1)
                            {
+
                              var transporter = nodemailer.createTransport({
                                service: 'gmail',
                               auth: {
@@ -66,7 +69,10 @@
                             });
 
                              alert("Please check your mail for resetting the password \n Thank you.");
+
                            }
+
+
                            else {
                              alert("The email address you entered is not registered with us.\n Please check your credentials again!");
                            }
