@@ -23,6 +23,7 @@ input {
 
 p {
   line-height: 1.5em;
+  color: #ECEFF1;
 }
 
 after { clear: both; }
