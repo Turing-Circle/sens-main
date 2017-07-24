@@ -36,9 +36,9 @@
 
                         var jsonObj = JSON.parse(this.responseText);
 
-                           var pid = jsonObj.rowCount; // OUTPUT = PID ONLY
-                           //localStorage.setItem("user_id",pid);
-                           if (pid == 1)
+                           var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
+
+                           if (rc == 1)
                            {
                              // ADD MAIL HERE @ SHUBHAM RAI
                              alert("Please check your mail for resetting the password \n Thank you.");
