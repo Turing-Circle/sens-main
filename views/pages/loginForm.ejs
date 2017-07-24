@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head><title>Login</title>
-     
+
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
-        
+
             img {
-                
+
                 width: 20%;
                 height: 20%;
                 margin-left: 41%;
                 margin-top: 2%;
-            
-            
-    
+
+
+
             }
             #ss{
                 color: #26ae90;
             }
-            
+
         </style>
-            
+
         <script>
-            
-            function loadDoc() {
+
+
+              function forgot() {
                 var f_email = document.getElementById("email").value;
+                  if (f_email != "")
+                  {
+
+                  window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
+                  window.close();
+                  }
+                  else {
+                  alert("Please enter your email address in the Email field");
+                  }
+              }
+
+            function loadDoc() {
+              var f_email = document.getElementById("email").value;
+
                 var f_password = document.getElementById("password").value;
-                
+
+                if( f_email == "" || f_password == "")
+                {
+                  alert("Please check your credentials as one or more fields have been left blank");
+                  return false;
+                }
                 var i = 0;
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -37,51 +57,57 @@
                             //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +       jsonObj.rows[i].product_id+"</td></tr>");
                            var pid = jsonObj.rows[i].product_id;
                            localStorage.setItem("user_id",pid);
-                        
+
                          window.location.href = "visual.ejs";
-                        
+
                        }
-                        
+
+                    }
+                    else {
+                      {
+                        alert("Something's wrong, please try again!");
+                      }
                     }
                 };
                 xhttp.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
-                
+
             }
-            
-            
+
+
         </script>
     </head>
-    
+
     <body background="login.png">
-       
-        
+
+
             <img src="sens.png">
-      
-        
+
+
         <div id="login">
             <form name='form-login'>
                 <span class="fontawesome-user"></span>
                 <input type="text" id="email" placeholder="Email">
-       
+
                 <span class="fontawesome-lock"></span>
                 <input type="password" id="password" placeholder="Password">
-          
-               
+
+
 
             </form>
+            <p style="text-align: center;" onclick="forgot()"> <u> Forgot Password ? </u> </p>
              <button onClick=loadDoc()><div id="ss"><strong>LOGIN</strong></div></button>
              <button ><div id="ss"><strong>SIGN UP</strong></div></button>
         </div>
-        
+
        <!-- <form>
             <input type="text" placeholder="Email" id="email">
             <input type="text" placeholder="Password" id="password">
-        
+
         </form>-->
-        
-            
+
+
 
     </body>
-    
+
 </html>
