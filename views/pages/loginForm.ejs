@@ -23,12 +23,13 @@
         </style>
 
         <script>
-            var f_email = document.getElementById("email").value;
+
 
               function forgot() {
-
+                var f_email = document.getElementById("email").value;
                   if (f_email != "")
                   {
+
                   window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
                   window.close();
                   }
@@ -38,6 +39,7 @@
               }
 
             function loadDoc() {
+              var f_email = document.getElementById("email").value;
 
                 var f_password = document.getElementById("password").value;
 
