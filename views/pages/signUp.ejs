@@ -21,6 +21,12 @@
 
         <script>
 
+            function transfer()
+            {
+              window.open("https://sens-agriculture.herokuapp.com/loginForm");
+              window.close();
+            }
+
             function validReg() {
 
                 // Name, Email, Phone, Location, Password, PID
@@ -39,7 +45,7 @@
                    return false;
                  }
 
-                 
+
                  var n = pass.localeCompare(cpass);
 
                  if (n == 0)
@@ -86,7 +92,7 @@
 
             </form>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
-             <button ><div id="ss"><strong>LOGIN</strong></div></button>
+             <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
 
         </div>
 
