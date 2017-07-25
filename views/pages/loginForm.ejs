@@ -54,6 +54,8 @@
 
                            if (rc == 1)
                            {
+                             xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?uname="+f_email, true);
+                             xh.send();
 
 
 
