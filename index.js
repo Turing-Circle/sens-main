@@ -244,8 +244,8 @@ app.get('/nodemail', function (request, response) {
  var mailOptions = {
    from: 'agriculture@gmail.com',
    to: f_email,
-   subject: 'Sending Email using Node.js',
-   text: 'That was easy!'
+   subject: 'Link to reset your password',
+   text: 'Dear User, \n \n Please go to to the link below to reset your password: \n https://sens-agriculture.herokuapp.com/forgotPassword?uname='+f_email+'\n\n Thank you. \n\n Regards,\n Team SenS'
  };
 
  transporter.sendMail(mailOptions, function(error, info){
