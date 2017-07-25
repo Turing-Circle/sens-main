@@ -24,7 +24,6 @@
         </style>
 
         <script>
-        var nodemailer = require("nodemailer");
 
               function transfer(){
                 window.open("https://sens-agriculture.herokuapp.com/signUp");
@@ -33,6 +32,8 @@
 
 
               function forgot() {
+                var nodemailer = require("nodemailer");
+                
                 var f_email = document.getElementById("email").value;
                   if (f_email != "")
                   {
