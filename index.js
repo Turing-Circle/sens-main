@@ -227,6 +227,36 @@ app.get('/progress', function(request, response) {
 });
 
 
+//for sending mail to in forgot password-case
+app.get('/nodemail', function (request, response) {
+
+  var query1 = url.parse(request.url, true);
+  var f_email = query1.query.f_email;
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+   auth: {
+     user: 'agriculture@gmail.com',
+     pass: '1234@asdf'
+   }
+ });
+
+ var mailOptions = {
+   from: 'agriculture@gmail.com',
+   to: f_email,
+   subject: 'Sending Email using Node.js',
+   text: 'That was easy!'
+ };
+
+ transporter.sendMail(mailOptions, function(error, info){
+   if (error) {
+     console.log(error);
+   } else {
+     console.log('Email sent: ' + info.response);
+   }
+ });
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

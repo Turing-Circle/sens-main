@@ -34,8 +34,6 @@
 
               function forgot() {
 
-                var nodemailer = require("nodemailer");
-
                 var f_email = document.getElementById("email").value;
                   if (f_email != "")
                   {
@@ -51,28 +49,7 @@
                            if (rc == 1)
                            {
 
-                             var transporter = nodemailer.createTransport({
-                               service: 'gmail',
-                              auth: {
-                                user: 'agriculture@gmail.com',
-                                pass: '1234@asdf'
-                              }
-                            });
-
-                            var mailOptions = {
-                              from: 'agriculture@gmail.com',
-                              to: f_email,
-                              subject: 'Sending Email using Node.js',
-                              text: 'That was easy!'
-                            };
-
-                            transporter.sendMail(mailOptions, function(error, info){
-                              if (error) {
-                                console.log(error);
-                              } else {
-                                console.log('Email sent: ' + info.response);
-                              }
-                            });
+                             
 
                              alert("Please check your mail for resetting the password \n Thank you.");
 
