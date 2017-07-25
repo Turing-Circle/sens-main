@@ -32,11 +32,14 @@
 
 
               function forgot() {
+
                 var nodemailer = require("nodemailer");
-                
+
                 var f_email = document.getElementById("email").value;
                   if (f_email != "")
                   {
+                    alert("reached");
+
                     var xh = new XMLHttpRequest();
                     xh.onreadystatechange = function() {
                       if (this.readyState == 4 && this.status == 200) {
