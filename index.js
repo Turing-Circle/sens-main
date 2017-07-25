@@ -3,6 +3,7 @@ var cors = require('cors');
 var app = express();
 var pg = require('pg');
 var url = require('url');
+var nodemailer = require("nodemailer");
 
 
 app.set('port', (process.env.PORT || 5000));
