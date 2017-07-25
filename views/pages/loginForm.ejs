@@ -78,6 +78,7 @@
 
 
                            else {
+
                              alert("The email address you entered is not registered with us.\n Please check your credentials again!");
                            }
 
@@ -124,9 +125,9 @@
 
                     }
                     else {
-                      {
+
                         alert("Something's wrong, please try again!");
-                      }
+
                     }
                 };
                 xhttp.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
