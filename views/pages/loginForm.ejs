@@ -54,7 +54,7 @@
 
                            if (rc == 1)
                            {
-                             xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?uname="+f_email, true);
+                             xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?f_email="+f_email, true);
                              xh.send();
 
                              alert("Please check your mail for resetting the password \n Thank you.");
@@ -112,7 +112,7 @@
 
                     }
                 };
-                xhttp.open("GET", "http://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
+                xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
 
             }
