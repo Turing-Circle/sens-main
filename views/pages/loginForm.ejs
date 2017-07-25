@@ -57,15 +57,10 @@
                              xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?uname="+f_email, true);
                              xh.send();
 
-
-
                              alert("Please check your mail for resetting the password \n Thank you.");
 
                            }
-
-
                            else {
-
                              alert("The email address you entered is not registered with us.\n Please check your credentials again!");
                            }
 
@@ -76,7 +71,7 @@
                       //window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
                       //window.close();
                   };
-                  xh.open("GET", "http://sens-agriculture.herokuapp.com/check?uname="+f_email, true);
+                  xh.open("GET", "https://sens-agriculture.herokuapp.com/check?uname="+f_email, true);
                   xh.send();
                 }
 
