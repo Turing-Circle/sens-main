@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html>
-    
-    <head><title>SenS - Sign Up</title>
-     
+
+    <head><title>User Register - SenS</title>
+
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
-        
+
             img {
-                
+
                 width: 20%;
                 height: 20%;
                 margin-left: 41%;
                 margin-top: 2%;
             }
+            body{
+              background: url(signup.png) no-repeat;
+              background-size: cover;
+            }
             #ss{
                 color: #26ae90;
             }
-            
+
         </style>
-            
+
         <script>
-            
+
+            function transfer()
+            {
+              window.open("https://sens-agriculture.herokuapp.com/loginForm");
+              window.close();
+            }
+
             function validReg() {
 
                 // Name, Email, Phone, Location, Password, PID
@@ -32,8 +42,14 @@
                      var pid = document.getElementById("pid").value;
                  var pass = document.getElementById("pwd").value;
                  var cpass = document.getElementById("cpwd").value;
-             
-                 
+
+                 if ( fn == "" || em == "" || ph == "" || loc == "" || pid == "" || pass == "" || cpass == "" )
+                 {
+                   alert("One or more fields have been left empty. Please make sure all the fields have been filled ! \n Thank You.");
+                   return false;
+                 }
+
+
                  var n = pass.localeCompare(cpass);
 
                  if (n == 0)
@@ -49,16 +65,16 @@
                 {
                 alert("Password's don't match, please try again !");
                 }
-             
+
             }
-            
-            
+
+
         </script>
     </head>
-    
+
     <body>
             <img src="sens.png">
-        
+
         <div id="login">
             <form name='form-login'>
                 <span class="fontawesome-user"></span>
@@ -75,23 +91,23 @@
 
                 <input type="password" id="pwd" placeholder="Password" required />
                 <span class="fontawesome-lock"></span>
-                <input type="password" id="cpwd" placeholder="Confirm Password" required /> <br>
-                <br> By clicking on Create Account, you agree to the our Terms and Conditions.
+                <input type="password" id="cpwd" placeholder="Confirm Password" required /> <br />
+                <br /> <p> By clicking on Create Account, you agree to the our Terms and Conditions.</p>
 
             </form>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
-             <button ><div id="ss"><strong>LOGIN</strong></div></button>
-            
+             <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
+
         </div>
-        
+
        <!-- <form>
             <input type="text" placeholder="Email" id="email">
             <input type="text" placeholder="Password" id="password">
-        
+
         </form>-->
-        
-            
+
+
 
     </body>
-    
+
 </html>

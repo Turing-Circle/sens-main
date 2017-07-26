@@ -6,8 +6,8 @@
 }
 
 body {
-  background: #708090;
-  color: #606468;
+  background : rgb(30, 30, 30);
+  color : rgb(30, 30, 30);
   font: 87.5%/1.5em 'Open Sans', sans-serif;
   margin: 0;
 }
@@ -23,6 +23,7 @@ input {
 
 p {
   line-height: 1.5em;
+  color: #a9a9a9;
 }
 
 after { clear: both; }
@@ -86,7 +87,7 @@ button {
   transition: background 0.3s ease-in-out;
     margin-left: 7%;
     margin-top: 7%;
-    
+
 }
 #login form input[type="submit"]:hover {
   background: #16aa56;

@@ -3,6 +3,7 @@ var cors = require('cors');
 var app = express();
 var pg = require('pg');
 var url = require('url');
+var nodemailer = require("nodemailer");
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -46,13 +47,13 @@ app.get('/getAllUser', function (request, response) {
 
 
 app.get('/login',function(request,response){
-	
+
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
 	var pass = query1.query.pwd;
-	
+
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  	
+
   	  client.query('SELECT product_id FROM userdata WHERE email = \'' + name +'\'  and password = \''+pass +'\' ', function(err, result) {
   	  	done();
       if (err)
@@ -66,12 +67,12 @@ app.get('/login',function(request,response){
 
 
 app.get('/check',function(request,response){
-	
+
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
-	
+
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  	
+
   	  client.query('SELECT email FROM userdata WHERE email = \'' + name +'\' ', function(err, result) {
   	  	done();
       if (err)
@@ -102,7 +103,7 @@ app.get('/sensordata', function (request, response) {
 
 
 app.get('/register',function(request,response){
-	
+
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.name;
 	var email = (query1.query.uname).trim();
@@ -110,10 +111,10 @@ app.get('/register',function(request,response){
 	var location = query1.query.loc;
 	var pass = query1.query.pwd;
 	var prodid = query1.query.pid;
-	
-	
+
+
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  	
+
   	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+pass+'\' , \''+prodid+ '\'   ) ', function(err, result) {
       done();
       if (err)
@@ -132,7 +133,7 @@ app.get('/forgotPassword', function(request, response) {
 	var name = query1.query.uname;
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  	
+
   	  client.query(' SELECT email FROM userdata WHERE email = \''+name +'\' ', function(err, result) {
   	  	done();
       if (err)
@@ -154,7 +155,7 @@ app.get('/updatepassword', function(request, response) {
   var pass = query1.query.pass;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    
+
       client.query('UPDATE userdata SET password = \'' + pass +'\' WHERE email = \'' + name + '\' ', function(err, result) {
         done();
       if (err)
@@ -226,9 +227,37 @@ app.get('/progress', function(request, response) {
 });
 
 
+//for sending mail to in forgot password-case
+app.get('/nodemail', function (request, response) {
+
+  var query1 = url.parse(request.url, true);
+  var f_email = query1.query.f_email;
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+   auth: {
+     user: 'sensagriculture@gmail.com',
+     pass: '1234@asdf'
+   }
+ });
+
+ var mailOptions = {
+   from: 'agriculture@gmail.com',
+   to: f_email,
+   subject: 'Link to reset your password',
+   text: 'Dear User, \n \n Please go to to the link below to reset your password: \n https://sens-agriculture.herokuapp.com/forgotPassword?uname='+f_email+'\n\n Thank you. \n\n Regards,\n Team SenS'
+ };
+
+ transporter.sendMail(mailOptions, function(error, info){
+   if (error) {
+     console.log(error);
+   } else {
+     console.log('Email sent: ' + info.response);
+   }
+ });
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-
