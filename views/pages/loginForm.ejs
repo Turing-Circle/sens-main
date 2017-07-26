@@ -2,12 +2,20 @@
 <html>
 
     <head><title>Login - SenS</title>
-      <% include ../partials/header.ejs %>
+
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
         body{
           background: url(login.png) no-repeat;
+          background-repeat: no-repeat;
           background-size: cover;
+    			height: 100%;
+    			left: 0;
+    			opacity: 0;
+    			position: absolute;
+    			top: 0;
+    			visibility: hidden;
+    			width: 150%;
         }
             img {
                 width: 20%;
@@ -18,34 +26,6 @@
             #ss{
                 color: #26ae90;
             }
-
-            .header {
-                background-color : #3aafa9;
-                color : white;
-                font-family : verdana;
-            }
-
-            #logo {
-                margin-bottom : 0;
-                padding-left : 1em;
-                font-family : verdana;
-                font-size : 180%;
-                font-weight : Bold;
-                word-spacing : 0.2em;
-            }
-
-            #agri{
-                letter-spacing : 0.25em;
-                font-weight : normal;
-                color : #17252a;
-
-            }
-
-            #moto {
-                margin-top : 0;
-                padding-left : 2em;
-            }
-
         </style>
 
         <script>
@@ -115,14 +95,9 @@
 
     <body>
 
-        <div class="banner">
-        <div class="header">
-            <p id="logo">SenS <span id="agri">Intelligent and Automated Agriculture</span> </p>
-            <p id="moto"> Reset Password </p>
-         </div>
-         </div>
 
-         <img src="sens.png">
+            <img src="sens.png">
+
 
         <div id="login">
             <form name='form-login'>
