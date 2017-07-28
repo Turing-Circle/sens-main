@@ -226,6 +226,10 @@ app.get('/progress', function(request, response) {
   response.render('pages/progress');
 });
 
+app.get('/showdata', function(request, response) {
+  response.render('pages/showdata');
+});
+
 
 //for sending mail to in forgot password-case
 app.get('/nodemail', function (request, response) {
