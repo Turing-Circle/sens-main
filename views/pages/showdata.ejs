@@ -5,11 +5,12 @@
 <div class="container">
 <h2>Database Results</h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.product_id %> - <%= r.temprature %> - <%= r.humidity %> - <%= r.ph %> - <%= r.co_leve %></li>
-    <% }); %>
-</ul>
+<select id="myselect" onchange="change_myselect(this.value)">
+<option value="">Choose an option:</option>
+<option value="test_table">Data from Sensors</option>
+<option value="userdata">User Data</option>
+
+
 
 </div>
 
