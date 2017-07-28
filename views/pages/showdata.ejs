@@ -10,7 +10,33 @@
 <option value="test_table">Data from Sensors</option>
 <option value="userdata">User Data</option>
 
+<script>
+function change_myselect(sel) {
 
+	var test_table_boolean = sel.localeCompare("test_table");
+	var user_table_boolean = sel.localeCompare("userdata");
+
+	if (test_table_boolean == 0)
+	{
+
+		var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/db", true);
+        xhr.send();
+        window.open("https://sens-agriculture.herokuapp.com/db?data=test_table");
+        window.close();
+	}
+	else if (user_table_boolean == 0)
+	{
+    alert("Test Table Selected");
+		var xhr = new XMLHttpRequest();
+        xhr.open('GET', "/db", true);
+        xhr.send();
+        window.open("https://sens-agriculture.herokuapp.com/db?data=userdata");
+        window.close();
+	}
+
+	}
+	</script>
 
 </div>
 
