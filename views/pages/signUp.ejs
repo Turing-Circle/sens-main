@@ -2,6 +2,7 @@
 <html>
 
     <head><title>User Register - SenS</title>
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
@@ -68,6 +69,10 @@
 
             }
 
+            var correctCaptcha = function(response) {
+        alert(response);
+    };
+
 
         </script>
     </head>
@@ -95,6 +100,7 @@
                 <br /> <p> By clicking on Create Account, you agree to the our Terms and Conditions.</p>
 
             </form>
+            <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
              <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
 
@@ -105,8 +111,6 @@
             <input type="text" placeholder="Password" id="password">
 
         </form>-->
-
-
 
     </body>
 
