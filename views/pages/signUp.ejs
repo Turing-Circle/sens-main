@@ -25,8 +25,12 @@
         </style>
 
         <script>
-        var correctCaptcha = "";
+        var correctCaptcha2 = "";
+        var correctCaptcha = function(response) {
 
+        correctCaptcha2 = response;
+        alert(correctCaptcha2);
+    };
 
             function transfer()
             {
@@ -58,7 +62,7 @@
 
                  if (n == 0)
                  {
-                   if(correctCaptcha == "")
+                   if(correctCaptcha2 == "")
                    {
                      alert("Please verify yourself as a human using checking the recaptcha element");
                      return false;
@@ -110,8 +114,8 @@
 
             </form>
             <br />
-            <div style="text-align:center; width:100%">
-              <div style="margin:auto; text-align:left;">
+            <div style="text-align:center;">
+              <div style="margin-left: auto; margin-right: auto;">
             <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
              <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
