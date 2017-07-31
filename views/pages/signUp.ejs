@@ -3,7 +3,6 @@
 
     <head><title>User Register - SenS</title>
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
             img {
@@ -27,70 +26,8 @@
             }
 
         </style>
-
         <script>
-        var correctCaptcha2 = "";
-        var correctCaptcha = function(response) {
-
-        correctCaptcha2 = response;
-        alert(correctCaptcha2);
-    };
-
-            function transfer()
-            {
-              window.open("https://sens-agriculture.herokuapp.com/loginForm");
-              window.close();
-            }
-
-            function validReg() {
-
-                // Name, Email, Phone, Location, Password, PID
-
-                 var fn = document.getElementById("fname").value;
-                 var em = document.getElementById("email").value;
-                 var ph = document.getElementById("mob").value;
-                 var loc = document.getElementById("loc").value;
-                     var pid = document.getElementById("pid").value;
-                 var pass = document.getElementById("pwd").value;
-                 var cpass = document.getElementById("cpwd").value;
-
-                 if ( fn == "" || em == "" || ph == "" || loc == "" || pid == "" || pass == "" || cpass == "" )
-                 {
-                   alert("One or more fields have been left empty. Please make sure all the fields have been filled ! \n Thank You.");
-                   return false;
-                 }
-
-
-                 var n = pass.localeCompare(cpass);
-
-
-                 if (n == 0)
-                 {
-                   if(correctCaptcha2 == "")
-                   {
-                     alert("Please verify yourself as a human using checking the recaptcha element");
-                     return false;
-                   }
-                   else
-                   {
-                     var xhr = new XMLHttpRequest();
-                     xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
-                     xhr.send();
-                     alert("Thank you for signing up !\n Redirecting you to the Login Page");
-                     window.open("https://sens-agriculture.herokuapp.com/loginForm");
-                     window.close();
-                   }
-                 }
-                 else
-                {
-                alert("Password's don't match, please try again !");
-                }
-
-
-
-            }
-
-
+      function transfer(){window.open("https://sens-agriculture.herokuapp.com/loginForm"),window.close()}function validReg(){var e=document.getElementById("fname").value,t=document.getElementById("email").value,n=document.getElementById("mob").value,a=document.getElementById("loc").value,o=document.getElementById("pid").value,r=document.getElementById("pwd").value,l=document.getElementById("cpwd").value;if(""==e||""==t||""==n||""==a||""==o||""==r||""==l)return alert("One or more fields have been left empty. \nPlease make sure all the fields have been filled ! \n\n Thank You."),!1;if(0==r.localeCompare(l)){if(""==correctCaptcha2)return alert("Please verify yourself as a human by checking the recaptcha box !"),!1;var c=new XMLHttpRequest;c.open("GET","/register?name="+e+"&uname="+t+"&phone="+n+"&loc="+a+"&pwd="+r+"&pid="+o,!0),c.send(),alert("Thank you for signing up !\n Redirecting you to the Login Page now"),window.open("https://sens-agriculture.herokuapp.com/loginForm"),window.close()}else alert("Password's don't match, please try again !")}var correctCaptcha2="",correctCaptcha=function(e){correctCaptcha2=e,alert(correctCaptcha2)};
         </script>
     </head>
 
@@ -118,19 +55,10 @@
 
             </form>
             <br />
-
             <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
              <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
-
         </div>
-
-       <!-- <form>
-            <input type="text" placeholder="Email" id="email">
-            <input type="text" placeholder="Password" id="password">
-
-        </form>-->
-
     </body>
 
 </html>
