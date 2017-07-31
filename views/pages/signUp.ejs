@@ -58,9 +58,10 @@
 
                  if (n == 0)
                  {
-                   if(correctCaptcha != "")
+                   if(correctCaptcha == "")
                    {
                      alert("Please verify yourself as a human using checking the recaptcha element");
+                     return false;
                    }
                    else
                    {
