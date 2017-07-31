@@ -70,15 +70,6 @@
 
 
         </script>
-
-        <script type="text/javascript">
-     var onloadCallback = function() {
-       grecaptcha.render('ss1', {
-         'sitekey' : '6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de'
-       });
-     };
-   </script>
-
     </head>
 
     <body>
@@ -104,12 +95,7 @@
                 <br /> <p> By clicking on Create Account, you agree to the our Terms and Conditions.</p>
 
             </form>
-            <form action="?" method="POST">
-     <div id="html_element"></div>
-     <br>
-       <button onClick=validReg()><div id="ss1"><strong>CREATE ACCOUNT</strong></div></button>
-   </form>
-
+            <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
              <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
 
         </div>
@@ -121,9 +107,7 @@
         </form>-->
 
 
-        <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-              async defer>
-          </script>
+
     </body>
 
 </html>
