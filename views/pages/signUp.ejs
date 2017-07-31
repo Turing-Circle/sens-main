@@ -25,6 +25,8 @@
         </style>
 
         <script>
+        var correctCaptcha = "";
+
 
             function transfer()
             {
@@ -53,25 +55,31 @@
 
                  var n = pass.localeCompare(cpass);
 
+
                  if (n == 0)
                  {
-                 var xhr = new XMLHttpRequest();
-                 xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
-                 xhr.send();
-                 alert("Thank you for signing up !\n Redirecting you to the Login Page");
-                 window.open("https://sens-agriculture.herokuapp.com/loginForm");
-                 window.close();
+                   if(correctCaptcha != "")
+                   {
+                     alert("Please verify yourself as a human using checking the recaptcha element");
+                   }
+                   else
+                   {
+                     var xhr = new XMLHttpRequest();
+                     xhr.open('GET', "/register?name="+fn+"&uname="+em+"&phone="+ph+"&loc="+loc+"&pwd="+pass+"&pid="+pid, true);
+                     xhr.send();
+                     alert("Thank you for signing up !\n Redirecting you to the Login Page");
+                     window.open("https://sens-agriculture.herokuapp.com/loginForm");
+                     window.close();
+                   }
                  }
                  else
                 {
                 alert("Password's don't match, please try again !");
                 }
 
-            }
 
-            var correctCaptcha = function(response) {
-        alert(response);
-    };
+
+            }
 
 
         </script>
@@ -100,7 +108,7 @@
                 <br /> <p> By clicking on Create Account, you agree to the our Terms and Conditions.</p>
 
             </form>
-            <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
+            <div class="g-recaptcha" id="ss" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
             <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
              <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
 
