@@ -110,7 +110,7 @@ app.get('/register',function(request,response){
 	var email = (query1.query.uname).trim();
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
-	var pass = sha1(query1.query.pwd);
+	var pass = query1.query.pwd;
 	var prodid = query1.query.pid;
 
 
