@@ -5,6 +5,7 @@ var pg = require('pg');
 var url = require('url');
 var nodemailer = require("nodemailer");
 var sha1 = require('sha1');
+var md5 = require('md5');
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -51,7 +52,7 @@ app.get('/login',function(request,response){
 
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
-	var pass = sha1(query1.query.pwd);
+	var pass = md5(query1.query.pwd);
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
@@ -110,17 +111,17 @@ app.get('/register',function(request,response){
 	var email = (query1.query.uname).trim();
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
-	var pass = query1.query.pwd;
-    var passEn = sha1(pass);
+	var pass = md5(query1.query.pwd);
+    //var passEn = sha1(pass);
 	var prodid = query1.query.pid;
 
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
-  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+passEn+'\' , \''+prodid+ '\'   ) ', function(err, result) {
+  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+ pass +'\' , \''+prodid+ '\'   ) ', function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err); }
+       { console.error(err); response.send("Error " + err + pass); }
       else
        { response.send(result); }
     });
