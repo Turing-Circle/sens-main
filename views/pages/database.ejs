@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Data</title>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ 
+        <style>
+
+            body {
+                background-color: #3e94ec;
+                font-family: "Roboto", helvetica, arial, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                text-rendering: optimizeLegibility;
+            }
+            
+        </style>
+        
+     
+
+
+        <script>
+            
+         
+            function loadData() {
+             
+                var i = 0;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
+                        for(i=0;i<jsonObj.rows.length;i++){
+                            
+                            document.getElementById("PID").insertAdjacentHTML('beforeend',   jsonObj.rows[i].product_id+"<br>");
+                            document.getElementById("Temp").insertAdjacentHTML('beforeend',             jsonObj.rows[i].temprature+"<br>");
+                            document.getElementById("Hum").insertAdjacentHTML('beforeend',   jsonObj.rows[i].humidity+"<br>");
+                            document.getElementById("ph").insertAdjacentHTML('beforeend',       jsonObj.rows[i].ph+"<br>");
+                            document.getElementById("co").insertAdjacentHTML('beforeend',           jsonObj.rows[i].co_leve+"<br>");
+                            document.getElementById("light").insertAdjacentHTML('beforeend',     jsonObj.rows[i].light+"<br>");
+                            document.getElementById("time").insertAdjacentHTML('beforeend',         jsonObj.rows[i].created_at+"<br>");
+                                 
+                        }
+
+                    }
+                    
+                };
+                
+                xhttp.open("GET", "http://sens-agriculture.herokuapp.com/db", true);
+                xhttp.send();
+                //setTimeout(loadData, 5000);
+                
+            }
+            
+        </script>
+        
+    </head>
+    <body onLoad=loadData()>
+        
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+                <th>pH Level</th>
+                <th>CO Level</th>
+                <th>Light</th>
+                <th>TimeStamp</th>
+            </tr>
+            <tr>
+                <td ID="PID"></td>
+                <td ID="Temp"></td>
+                <td ID="Hum"></td>
+                <td ID="ph"></td>
+                <td ID="co"></td>
+                <td ID="light"></td>
+                <td ID="time"></td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
