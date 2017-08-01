@@ -10,16 +10,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
-		var linkToFocus = document.getElementById('b1');
-		var linkToFocus1 = document.getElementById('b2');
-		var linkToFocus2 = document.getElementById('b3');
-		var linkToFocus3 = document.getElementById('b4');
-
-linkToFocus.focus();
-linkToFocus1.focus();
-linkToFocus2.focus();
-linkToFocus3.focus();
+		$(document).on("ready", function () {
+    $(".sanjothb").eq(0).addClass('hover');
+});
 </script>
 
 	</head>
@@ -37,19 +32,19 @@ linkToFocus3.focus();
 			<!-- transparent buttons -->
 
 					<form target="_blank" action="/progress">
-					    <button id="b1" type="submit">Mission Overview</button>
+					    <button class="sanjothb" type="submit">Mission Overview</button>
 					</form>
 
 					<form target="_blank" action="/loginForm">
-					    <button id="b2"  type="submit">Login</button>
+					    <button class="sanjothb"  type="submit">Login</button>
 					</form>
 
 					<form target="_blank" action="/signUp">
-					    <button id="b3"  type="submit">Register</button>
+					    <button class="sanjothb"  type="submit">Register</button>
 					</form>
 
 					<form target="_blank" action="/database">
-					    <button id="b4"  type="submit">View Data</button>
+					    <button class="sanjothb"  type="submit">View Data</button>
 					</form>
 
 			</div>
