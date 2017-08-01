@@ -1,169 +1,211 @@
-
 <html>
-
-    <head><title>D3 Visualization - SenS </title>
-
-        <!-- <link href="c3/c3.css" rel="stylesheet"> sadsd -->
-        <link rel="stylesheet" href="/stylesheets/c3/c3.css">
-
-
-
-
-        <style>
-
-            .temp_chart div {
-                font: 10px sans-serif;
-                background-color: steelblue;
-                text-align: right;
-                padding: 3px;
-                margin: 1px;
-                color: white;
-            }
-            .hum_chart div {
-                font: 10px sans-serif;
-                background-color: red;
-                text-align: right;
-                padding: 3px;
-                margin: 1px;
-                color: white;
-            }
-            .co_chart div {
-                font: 10px sans-serif;
-                background-color: red;
-                text-align: right;
-                padding: 3px;
-                margin: 1px;
-                color: white;
-            }
-
-        </style>
-
-        <!-- D3 Script declarations -->
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <!-- <script src="c3/c3.min.js"></script> -->
-        <script src="/stylesheets/c3/c3.min.js"></script>
-
-
-        <script type="text/javascript">
-
-            var user_id = localStorage.getItem("user_id");
-            var tempArr = [];
-            var tempArr_6 = [];
-            var humArr = [];
-            var humArr_6 = [];
-            var coArr = [];
-            var coArr_6 = [];
-
-            function loadDoc2() {
-                var i = 0;
-                var j = 0;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var jsonObj = JSON.parse(xhttp.responseText);
-                       for(i=1;i<=jsonObj.rows.length;i++){
-                            //document.writeln("<tr><td><b>Temp:</b></td><td width = 50>" +       jsonObj.rows[i].temprature+"</td></tr>");
-                           tempArr.push(jsonObj.rows[i-1].temprature);
-                           humArr.push(jsonObj.rows[i-1].humidity);
-                           coArr.push(jsonObj.rows[i-1].co_leve);
-
-                       }
-                        if(tempArr.length >= 12){
-                            for(j=tempArr.length-12;j<tempArr.length;j++){
-                                tempArr_6.push(tempArr[j]);
-                                humArr_6.push(humArr[j]);
-                                coArr_6.push(coArr[j]);
-                            }
+    <head><title>Dashboard</title></head>
+    <style>
+        body 
+        {
+            background: rgba(255,255,255,1);
+            background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+            background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+            background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+            background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%,   rgba(237,237,237,1) 100%);
+            background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+        }
+            
+        ._tempContainer {
+            width: 35%;
+            margin: 15px auto;
+            margin-left: 13%;
+            float: left;    
+        }
+        
+        ._coContainer {
+            width: 35%;
+            margin: 15px auto;
+            margin-right: 33%;
+            float: right;
+        }
+        
+        ._humContainer {
+            width: 35%;
+            margin: 15px auto;
+            margin-right: 13%;
+            float: right; 
+        }
+        
+            
+        
+    
+    </style>
+    
+    <!-- CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    
+    <script type="text/javascript">
+        
+        
+        //Getting user login session value
+        var user_id = localStorage.getItem("user_id");
+        
+        //Arrays
+        var tempArr_temp = [];
+        var humArr_temp = [];
+        var coArr_temp = [];
+        
+        //Windows Arrays
+        var tempArr = [];
+        var humArr = [];
+        var coArr = [];
+        
+        //Sum Variables
+        var sum_temp = 0;
+        var sum_hum = 0;
+        var sum_co = 0;
+        
+        //Function to load Json Parse data into Arrays
+        function onVisual()
+        {
+            var i = 0; var j = 0;
+            var xhttp = new XMLHttpRequest();
+            
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    var jsonObj = JSON.parse(xhttp.responseText);
+                    //Parsing JSON array
+                    for(i=1;i<=jsonObj.rows.length;i++){
+                        tempArr_temp.push(jsonObj.rows[i-1].temprature);
+                        humArr_temp.push(jsonObj.rows[i-1].humidity);
+                        coArr_temp.push(jsonObj.rows[i-1].co_leve);
+                    }
+                    
+                    //Creating a 12 data window
+                    if(tempArr_temp.length >= 12){
+                        for(j=tempArr_temp.length-12;j<tempArr_temp.length; j++){
+                            
+                            tempArr.push(tempArr_temp[j]);
+                            humArr.push(humArr_temp[j]);
+                            coArr.push(coArr_temp[j]);
+                            //Code to calculate average
+                            sum_temp = sum_temp + tempArr_temp[j];
+                            sum_hum = sum_hum + humArr_temp[j];
+                            sum_co = sum_co + coArr_temp[j];
+                        } 
+                    }
+                    
+                    else{
+                        for(j=0;j<_tempArr.length;j++){
+                            
+                            tempArr.push(tempArr_temp[j]);
+                            humArr.push(humArr_temp[j]);
+                            coArr.push(coArr_temp[j]);
+                            //Code to calculate average
+                            sum_temp = sum_temp + tempArr_temp[j];
+                            sum_hum = sum_hum + humArr_temp[j];
+                            sum_co = sum_co + coArr_temp[j];
+                            
                         }
-                        else{
-                            for(j=0;j<tempArr.length;j++){
-                                tempArr_6.push(tempArr[j]);
-                                humArr_6.push(humArr[j]);
-                                coArr_6.push(coArr[j]);
-                            }
-                        }
                     }
+                }
+                
+                temAVG = sum_temp/12;
+                humAVG = sum_hum/12;
+                coAVG = sum_co/12;
+                document.getElementById("tempA").innerHTML = temAVG;
+                document.getElementById("humA").innerHTML = humAVG;
+                document.getElementById("coA").innerHTML = coAVG;
+            };
+            xhttp.open("GET", "http://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
+            xhttp.send();
+            setTimeout(function(){
+                dataVis();
+            },  1500);
+        }
+        
+        function dataVis()
+        {
+            //Temperature Chart
+            var ctxT = document.getElementById('tempChart').getContext('2d');
+            var tempChart = new Chart(ctxT, {
+                type: 'line',
+                data: {
+                    labels: tempArr,
+                    datasets: [{
+                        label: 'Temperature',
+                        data: tempArr,
+                        backgroundColor: "rgba(102, 140, 255, 0.6)"
+                    }]
+                }
+            });
+            
+            //Humidity Chart
+            var ctxH = document.getElementById('humChart').getContext('2d');
+            var humChart = new Chart(ctxH, {
+                type: 'line',
+                data: {
+                    labels: humArr,
+                    datasets: [{
+                        label: 'Humidity',
+                        data: humArr,
+                        backgroundColor: "rgba(255, 102, 102, 0.6)"
+                    }]
+                }
+            });
+            
+            //CO Chart 
+            var ctxC = document.getElementById('coChart').getContext('2d');
+            var coChart = new Chart(ctxC, {
+                type: 'line',
+                data: {
+                    labels: coArr,
+                    datasets: [{
+                        label: 'Carbon Monoxide',
+                        data: coArr,
+                        backgroundColor: "rgba(112, 219, 112, 0.6)"
+                    }]
+                }
+            });
+        }
+        
+        
+    
+    </script>
+    
+    <body onload="onVisual()">
+        
+        <!-- Container Classes for each variable -->
+        
+        <div class="_tempContainer">
+            
+            <h2>Temperature</h2>
+            <h5>Current Average: <span id="tempA"></span></h5>
+            <div>
+                <canvas id="tempChart"></canvas>
+            </div>
 
-                };
-                xhttp.open("GET", "http://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
-                xhttp.send();
-                setTimeout(function(){
-                    loadDoc3();
-                },  1500);
-
-
-            }
-
-            function loadDoc3(){
-               /*var i = 0;
-                for(i=0;i<tempArr.length;i++){
-                    document.writeln(tempArr[i]+"--");
-                }*/
-                //D3 Code
-              /* d3.select(".temp_chart")
-                    .selectAll("div")
-                    .data(tempArr_6)
-                    .enter()
-                    .append("div")
-                    .style("width", function(d) { return d + "px"; })
-                    .text(function(d) { return d; });
-
-                d3.select(".hum_chart")
-                    .selectAll("div")
-                    .data(humArr_6)
-                    .enter()
-                    .append("div")
-                    .style("width", function(d) { return d + "px"; })
-                    .text(function(d) { return d; }); */
-
-                //C3 Code
-
-                var chart_temp = c3.generate({
-                    bindto: '.temp_chart',
-                    data: {
-                        columns: [
-                        tempArr_6
-
-                        ]
-                    }
-                });
-
-                var chart_hum = c3.generate({
-                    bindto: '.hum_chart',
-                    data: {
-                        columns: [
-                            humArr_6
-                        ]
-                    }
-                });
-
-                var chart_temp = c3.generate({
-                    bindto: '.co_chart',
-                    data: {
-                        columns: [
-                        coArr_6
-
-                        ]
-                    }
-                });
-            }
-
-        </script>
-
-
-    </head>
-    <body>
-
-        <button type="button" onclick="loadDoc2()">Get Visulization</button>
-        <!--<button type="button" onclick="loadDoc3()">Get Array</button>-->
-        <h4>TEMPERATURE</h4>
-        <div class="temp_chart"></div>
-        <h4>HUMIDITY</h4>
-        <div class="hum_chart"></div>
-        <h4>CO Level</h4>
-        <div class="co_chart"></div>
-
+        </div>
+        
+        <div class="_humContainer">
+            
+            <h2>Humidity</h2>
+            <h5>Current Average: <span id="humA"></span></h5>
+            <div>
+                <canvas id="humChart"></canvas>
+            </div>
+        
+        </div>
+        
+        <div class="_coContainer">
+            
+            <h2>CO</h2>
+            <h5>Current Average: <span id="coA"></span></h5>
+            <div>
+                <canvas id="coChart"></canvas>
+            </div>
+            
+        </div>
+        
+    
     </body>
-
-
 </html>
