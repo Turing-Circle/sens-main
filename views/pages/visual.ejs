@@ -1,7 +1,9 @@
 <html>
-    <head><title>Dashboard</title></head>
+    <head>
+      <link rel="icon" type="image/png" href="title_logo.png">
+      <title>Dashboard</title></head>
     <style>
-        body 
+        body
         {
             background: rgba(255,255,255,1);
             background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
@@ -12,64 +14,64 @@
             background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
         }
-            
+
         ._tempContainer {
             width: 35%;
             margin: 15px auto;
             margin-left: 13%;
-            float: left;    
+            float: left;
         }
-        
+
         ._coContainer {
             width: 35%;
             margin: 15px auto;
             margin-right: 33%;
             float: right;
         }
-        
+
         ._humContainer {
             width: 35%;
             margin: 15px auto;
             margin-right: 13%;
-            float: right; 
+            float: right;
         }
-        
-            
-        
-    
+
+
+
+
     </style>
-    
+
     <!-- CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-    
+
     <script type="text/javascript">
-        
-        
+
+
         //Getting user login session value
         var user_id = localStorage.getItem("user_id");
-        
+
         //Arrays
         var tempArr_temp = [];
         var humArr_temp = [];
         var coArr_temp = [];
-        
+
         //Windows Arrays
         var tempArr = [];
         var humArr = [];
         var coArr = [];
-        
+
         //Sum Variables
         var sum_temp = 0;
         var sum_hum = 0;
         var sum_co = 0;
-        
+
         //Function to load Json Parse data into Arrays
         function onVisual()
         {
             var i = 0; var j = 0;
             var xhttp = new XMLHttpRequest();
-            
+
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
                     var jsonObj = JSON.parse(xhttp.responseText);
@@ -79,11 +81,11 @@
                         humArr_temp.push(jsonObj.rows[i-1].humidity);
                         coArr_temp.push(jsonObj.rows[i-1].co_leve);
                     }
-                    
+
                     //Creating a 12 data window
                     if(tempArr_temp.length >= 12){
                         for(j=tempArr_temp.length-12;j<tempArr_temp.length; j++){
-                            
+
                             tempArr.push(tempArr_temp[j]);
                             humArr.push(humArr_temp[j]);
                             coArr.push(coArr_temp[j]);
@@ -91,12 +93,12 @@
                             sum_temp = sum_temp + tempArr_temp[j];
                             sum_hum = sum_hum + humArr_temp[j];
                             sum_co = sum_co + coArr_temp[j];
-                        } 
+                        }
                     }
-                    
+
                     else{
                         for(j=0;j<_tempArr.length;j++){
-                            
+
                             tempArr.push(tempArr_temp[j]);
                             humArr.push(humArr_temp[j]);
                             coArr.push(coArr_temp[j]);
@@ -104,11 +106,11 @@
                             sum_temp = sum_temp + tempArr_temp[j];
                             sum_hum = sum_hum + humArr_temp[j];
                             sum_co = sum_co + coArr_temp[j];
-                            
+
                         }
                     }
                 }
-                
+
                 temAVG = sum_temp/12;
                 humAVG = sum_hum/12;
                 coAVG = sum_co/12;
@@ -122,7 +124,7 @@
                 dataVis();
             },  1500);
         }
-        
+
         function dataVis()
         {
             //Temperature Chart
@@ -138,7 +140,7 @@
                     }]
                 }
             });
-            
+
             //Humidity Chart
             var ctxH = document.getElementById('humChart').getContext('2d');
             var humChart = new Chart(ctxH, {
@@ -152,8 +154,8 @@
                     }]
                 }
             });
-            
-            //CO Chart 
+
+            //CO Chart
             var ctxC = document.getElementById('coChart').getContext('2d');
             var coChart = new Chart(ctxC, {
                 type: 'line',
@@ -167,17 +169,17 @@
                 }
             });
         }
-        
-        
-    
+
+
+
     </script>
-    
+
     <body onload="onVisual()">
-        
+
         <!-- Container Classes for each variable -->
-        
+
         <div class="_tempContainer">
-            
+
             <h2>Temperature</h2>
             <h5>Current Average: <span id="tempA"></span></h5>
             <div>
@@ -185,27 +187,27 @@
             </div>
 
         </div>
-        
+
         <div class="_humContainer">
-            
+
             <h2>Humidity</h2>
             <h5>Current Average: <span id="humA"></span></h5>
             <div>
                 <canvas id="humChart"></canvas>
             </div>
-        
+
         </div>
-        
+
         <div class="_coContainer">
-            
+
             <h2>CO</h2>
             <h5>Current Average: <span id="coA"></span></h5>
             <div>
                 <canvas id="coChart"></canvas>
             </div>
-            
+
         </div>
-        
-    
+
+
     </body>
 </html>
