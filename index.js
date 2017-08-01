@@ -27,7 +27,7 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/showdata', {results: result.rows} ); }
+       { response.send(result); }
     });
   });
 });
@@ -248,6 +248,11 @@ app.get('/visual.ejs', function(request, response) {
 app.get('/progress', function(request, response) {
   response.render('pages/progress');
 });
+
+app.get('/database', function(request, response) {
+  response.render('pages/database');
+});
+
 
 
 //for sending mail to in forgot password-case
