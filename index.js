@@ -110,16 +110,15 @@ app.get('/register',function(request,response){
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
 	var pass = query1.query.pwd;
-    //var passEn = sha1(pass);
 	var prodid = query1.query.pid;
 
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
-  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+ pass +'\' , \''+prodid+ '\'   ) ', function(err, result) {
+  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+pass+'\' , \''+prodid+ '\'   ) ', function(err, result) {
       done();
       if (err)
-       { console.error(err); response.send("Error " + err + pass); }
+       { console.error(err); response.send("Error " + err); }
       else
        { response.send(result); }
     });
@@ -133,9 +132,32 @@ app.get('/forgotPassword', function(request, response) {
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
 
+  var n = name.length;
+  var newstr ="";
+  var count;
+  var a;
+
+    for(count = 0; count < n; count++)
+    {
+
+    	if(count == 0 || count%2 == 0)
+        {
+    		a = name.charCodeAt(count)+1;
+        }
+        else
+        {
+        a = name.charCodeAt(count)-1;
+        }
+        var b = String.fromCharCode(a);
+        newstr += b;
+
+    }
+    var name1 = newstr;
+
+
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
-  	  client.query(' SELECT email FROM userdata WHERE email = \''+name +'\' ', function(err, result) {
+  	  client.query(' SELECT email FROM userdata WHERE email = \''+name1+'\' ', function(err, result) {
   	  	done();
       if (err)
        { console.error(err); response.send("Error " + err); }
@@ -168,7 +190,7 @@ app.get('/updatepassword', function(request, response) {
 
 
 // Inserting Sensor Data via GET
-// SANJOTH'S DECLARATIONS HERE
+// SANJOTH'S WORK STARTS HERE
 // https://sens-agriculture.herokuapp.com/insertData?pid=p1337&temp=23&humid=70&ph=30&co=111&uv=11
 app.get('/insertData', function (request, response) {
 var query1 = url.parse(request.url, true);
