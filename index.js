@@ -132,32 +132,32 @@ app.get('/forgotPassword', function(request, response) {
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
 
-/*
   var n = name.length;
   var newstr ="";
-  var count = 0;
+  var count;
+  var a;
 
     for(count = 0; count < n; count++)
     {
 
     	if(count == 0 || count%2 == 0)
         {
-    		var a = name.charCodeAt(count)+1;
+    		a = name.charCodeAt(count)+1;
         }
         else
         {
-        	var a = name.charCodeAt(count)-1;
+        a = name.charCodeAt(count)-1;
         }
         var b = String.fromCharCode(a);
         newstr += b;
 
     }
-    name = newstr;
-    */
+    var name1 = newstr;
+
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
-  	  client.query(' SELECT email FROM userdata WHERE email = \''+name +'\' ', function(err, result) {
+  	  client.query(' SELECT email FROM userdata WHERE email = \''+name1+'\' ', function(err, result) {
   	  	done();
       if (err)
        { console.error(err); response.send("Error " + err); }
