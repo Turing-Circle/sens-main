@@ -260,6 +260,29 @@ app.get('/nodemail', function (request, response) {
 
   var query1 = url.parse(request.url, true);
   var f_email = query1.query.f_email;
+  var name = f_email;
+  var n = name.length;
+  var newstr ="";
+  var count;
+
+    for(count = 0; count < n; count++)
+    {
+
+    	if(count == 0 || count%2 == 0)
+        {
+    		var a = name.charCodeAt(count)-1;
+        }
+        else
+        {
+        	var a = name.charCodeAt(count)+1;
+        }
+        var b = String.fromCharCode(a);
+        newstr += b;
+
+    }
+    var name1 = newstr;
+
+
 
   var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -273,7 +296,7 @@ app.get('/nodemail', function (request, response) {
    from: 'agriculture@gmail.com',
    to: f_email,
    subject: 'Link to reset your password',
-   text: 'Dear User, \n \n Please go to to the link below to reset your password: \n https://sens-agriculture.herokuapp.com/forgotPassword?uname='+f_email+'\n\n Thank you. \n\n Regards,\n Team SenS'
+   text: 'Dear User, \n \n Please go to to the link below to reset your password: \n https://sens-agriculture.herokuapp.com/forgotPassword?uname='+name1+'\n\n Thank you. \n\n Regards,\n Team SenS'
  };
 
  transporter.sendMail(mailOptions, function(error, info){
