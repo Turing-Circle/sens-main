@@ -134,17 +134,18 @@ app.get('/forgotPassword', function(request, response) {
 
   var n = name.length;
   var newstr ="";
+  var count = 0;
 
     for(count = 0; count < n; count++)
     {
 
     	if(count == 0 || count%2 == 0)
         {
-    		var a = str.charCodeAt(count)+1;
+    		var a = name.charCodeAt(count)+1;
         }
         else
         {
-        	var a = str.charCodeAt(count)-1;
+        	var a = name.charCodeAt(count)-1;
         }
         var b = String.fromCharCode(a);
         newstr += b;
