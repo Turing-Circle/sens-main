@@ -110,13 +110,14 @@ app.get('/register',function(request,response){
 	var email = (query1.query.uname).trim();
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
-	var pass = sha1(query1.query.pwd);
+	var pass = query1.query.pwd;
+    var passEn = sha1(pass);
 	var prodid = query1.query.pid;
 
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
-  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+pass+'\' , \''+prodid+ '\'   ) ', function(err, result) {
+  	  client.query(' Insert into userdata (name, email, phone, location, password, product_id) values (   \'' + name +'\' , \''+ email + ' \' , \' '+phone+'\' , \''+ location+'\' , \''+passEn+'\' , \''+prodid+ '\'   ) ', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
