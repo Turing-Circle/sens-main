@@ -4,8 +4,6 @@ var app = express();
 var pg = require('pg');
 var url = require('url');
 var nodemailer = require("nodemailer");
-var sha1 = require('sha1');
-var md5 = require('md5');
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -52,7 +50,7 @@ app.get('/login',function(request,response){
 
 	var query1 = url.parse(request.url, true);
 	var name = query1.query.uname;
-	var pass = md5(query1.query.pwd);
+	var pass = query1.query.pwd;
 
 	pg.connect(process.env.DATABASE_URL, function(err, client, done) {
 
@@ -111,7 +109,7 @@ app.get('/register',function(request,response){
 	var email = (query1.query.uname).trim();
 	var phone = query1.query.phone;
 	var location = query1.query.loc;
-	var pass = md5(query1.query.pwd);
+	var pass = query1.query.pwd;
     //var passEn = sha1(pass);
 	var prodid = query1.query.pid;
 
