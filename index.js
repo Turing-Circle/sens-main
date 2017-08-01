@@ -133,10 +133,11 @@ app.get('/forgotPassword', function(request, response) {
 	var name = query1.query.uname;
 
   var n = name.length;
+  var newstr ="";
 
     for(count = 0; count < n; count++)
     {
-    
+
     	if(count == 0 || count%2 == 0)
         {
     		var a = str.charCodeAt(count)+1;
