@@ -11,10 +11,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script>
-		var linkToFocus = document.getElementsByName("sanjothb")[0];
-		var linkToFocus1 = document.getElementsByName("sanjothb")[1];
-		var linkToFocus2 = document.getElementsByName("sanjothb")[2];
-		var linkToFocus3 = document.getElementsByName("sanjothb")[3];
+		var linkToFocus = document.getElementById('b1');
+		var linkToFocus1 = document.getElementById('b2');
+		var linkToFocus2 = document.getElementById('b3');
+		var linkToFocus3 = document.getElementById('b4');
 
 linkToFocus.focus();
 linkToFocus1.focus();
@@ -37,19 +37,19 @@ linkToFocus3.focus();
 			<!-- transparent buttons -->
 
 					<form target="_blank" action="/progress">
-					    <button name="sanjothb" type="submit">Mission Overview</button>
+					    <button id="b1" type="submit">Mission Overview</button>
 					</form>
 
 					<form target="_blank" action="/loginForm">
-					    <button name="sanjothb" type="submit">Login</button>
+					    <button id="b2"  type="submit">Login</button>
 					</form>
 
 					<form target="_blank" action="/signUp">
-					    <button name="sanjothb" type="submit">Register</button>
+					    <button id="b3"  type="submit">Register</button>
 					</form>
 
 					<form target="_blank" action="/database">
-					    <button name="sanjothb" type="submit">View Data</button>
+					    <button id="b4"  type="submit">View Data</button>
 					</form>
 
 			</div>
