@@ -308,6 +308,11 @@ app.get('/nodemail', function (request, response) {
  });
 });
 
+app.get('/.well-known/acme-challenge/Koe412npFvWWiOxoIajMHx6y6llY0wxOG21DvW4DJuQ', function(request, response) {
+  response.render('pages/new');
+});
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
