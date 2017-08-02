@@ -34,7 +34,7 @@ after { clear: both; }
 }
 
 #login form {
-  margin: auto;
+  margin-top: 1.5%;
   padding: 22px 22px 22px 22px;
   width: 100%;
   border-radius: 5px;
