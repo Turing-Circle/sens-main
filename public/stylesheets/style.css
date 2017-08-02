@@ -30,7 +30,7 @@ after { clear: both; }
 
 #login {
   margin: 50px auto;
-  width: 320px;
+  width: 290px;
 }
 
 #login form {
@@ -85,9 +85,9 @@ button {
   color: white;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
-  margin-top: 7%;
-
+  margin-top: 5%;
 }
+
 #login form input[type="submit"]:hover {
   background: #16aa56;
 }
