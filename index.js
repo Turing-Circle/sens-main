@@ -308,7 +308,7 @@ app.get('/nodemail', function (request, response) {
  });
 });
 
-app.get('/.well-known/acme-challenge/zQHRrzxXqM4VEkENtKgSlhm6KXaN6sV0_mcorKO03YM', function(request, response) {
+app.get('/.well-known/acme-challenge/hMTblpmF75BERf8wRw7qp_Blc4t9eotMl6DPLcSppag', function(request, response) {
   response.render('pages/new');
 });
 
