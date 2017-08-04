@@ -5,12 +5,98 @@
   font-family: 'FontAwesome', sans-serif;
 }
 
+
 body {
-  background : rgb(30, 30, 30);
-  color : rgb(30, 30, 30);
-  font: 87.5%/1.5em 'Open Sans', sans-serif;
-  margin: 0;
+  background-image: url("login.png");
+    background-position: center;
+    background-size: cover;
+    color : rgb(30, 30, 30);
+  
+    margin: 0;
 }
+
+/*
+.form-signin
+{
+    margin-top: 1.5%;
+  padding: 22px 22px 22px 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: #282e33;
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin input[type="text"]
+{
+ 
+    background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 80%;
+  height: 50px;
+}
+.form-signin input[type="password"]
+{
+   background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 80%;
+  height: 50px;
+}
+
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 80%;
+    height: 20%;
+    margin: 0 auto 10px;
+    display: block;
+
+    
+}
+.need-help
+{
+    margin-top: 10px;
+    color: #26ae90;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+    color: #26ae90;
+}*/
 
 input {
   border: none;
@@ -30,7 +116,7 @@ after { clear: both; }
 
 #login {
   margin: 50px auto;
-  width: 320px;
+  width: 100%;
 }
 
 #login form {
@@ -52,7 +138,7 @@ after { clear: both; }
   float: left;
   line-height: 50px;
   text-align: center;
-  width: 50px;
+  width: 20%;
   height: 50px;
 }
 
@@ -62,7 +148,7 @@ after { clear: both; }
   color: #a9a9a9;
   margin-bottom: 1em;
   padding: 0 16px;
-  width: 235px;
+  width: 80%;
   height: 50px;
 }
 
@@ -72,7 +158,7 @@ after { clear: both; }
   color: #a9a9a9;
   margin-bottom: 1em;
   padding: 0 16px;
-  width: 235px;
+  width: 80%;
   height: 50px;
 }
 
@@ -80,9 +166,9 @@ button {
   background: WHITE;
   border: 0;
   width: 100%;
-  height: 40px;
+  height: 50px;
   border-radius: 3px;
-  color: white;
+  color: #26ae90;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
   margin-top: 5%;
@@ -91,3 +177,19 @@ button {
 #login form input[type="submit"]:hover {
   background: #16aa56;
 }
+
+.profile-img
+{
+    width: 80%;
+    height: 20%;
+    margin: 0 auto 10px;
+    margin-top: 15%;
+    display: block;
+
+    
+}
+
+
+
+
+

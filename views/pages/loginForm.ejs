@@ -1,116 +1,117 @@
-<!DOCTYPE html>
 <html>
-
-    <head><title>Login - SenS</title>
-      <link rel="icon" type="image/png" href="title_logo.png">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <style>
-        body{
-          background: url(login.png) no-repeat;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-attachment: fixed;
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-        }
-            img {
-                width: 20%;
-                height: 20%;
-                margin-left: 41%;
-                margin-top: 2%;
-            }
-            #ss{
-                color: #26ae90;
-            }
-        </style>
-
+    
+    <head><title>Login</title>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/png" href="title_logo.png">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        
         <script>
-              function transfer(){
+            
+            function transfer(){
                 window.open("https://sens-agriculture.herokuapp.com/signUp");
                 window.close();
-              }
-              function forgot() {
+            }
+            function forgot() {
                 var f_email = document.getElementById("email").value;
-                  if (f_email != "")
-                  {
+                if (f_email != "")
+                {
                     var xh = new XMLHttpRequest();
                     xh.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                      //  alert(this.responseText);
-                        var jsonObj = JSON.parse(this.responseText);
-                           var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
-                           if (rc == 1)
-                           {
-                             xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?f_email="+f_email, true);
-                             xh.send();
-                             alert("Please check your mail for resetting the password \n Thank you.");
-                           }
-                           else {
-                             alert("The email address you entered is not registered with us.\n Please check your credentials again!");
-                           }
-                    }
-                      //window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
-                      //window.close();
-                  };
-                  xh.open("GET", "https://sens-agriculture.herokuapp.com/check?uname="+f_email, true);
-                  xh.send();
+                        if (this.readyState == 4 && this.status == 200) {
+                            //  alert(this.responseText);
+                            var jsonObj = JSON.parse(this.responseText);
+                            var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
+                            if (rc == 1)
+                            {
+                                xh.open("GET", "https://sens-agriculture.herokuapp.com/nodemail?f_email="+f_email, true);
+                                xh.send();
+                                alert("Please check your mail for resetting the password \n Thank you.");
+                            }
+                            else {
+                                alert("The email address you entered is not registered with us.\n Please check your credentials again!");
+                            }
+                        }
+                        //window.open("https://sens-agriculture.herokuapp.com/forgotPassword?uname="+f_email);
+                        //window.close();
+                    };
+                    xh.open("GET", "https://sens-agriculture.herokuapp.com/check?uname="+f_email, true);
+                    xh.send();
                 }
-                  else {
-                  alert("Please enter your email address in the Email field");
-                  }
-              }
+                else {
+                    alert("Please enter your email address in the Email field");
+                }
+            }
+            
             function loadDoc() {
-              var f_email = document.getElementById("email").value;
+                var f_email = document.getElementById("email").value;
                 var f_password = document.getElementById("password").value;
                 if( f_email == "" || f_password == "")
                 {
-                  alert("Please check your credentials as one or more fields have been left blank");
-                  return false;
+                    alert("Please check your credentials as one or more fields have been left blank");
+                    return false;
                 }
                 var i = 0;
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         var jsonObj = JSON.parse(xhttp.responseText);
-                       for(i=0;i<jsonObj.rows.length;i++){
-                            //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +       jsonObj.rows[i].product_id+"</td></tr>");
-                           var pid = jsonObj.rows[i].product_id;
-                           localStorage.setItem("user_id",pid);
-                         window.location.href = "visual.ejs";
+                        for(i=0;i<jsonObj.rows.length;i++){
+                            //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +         jsonObj.rows[i].product_id+"</td></tr>");
+                            var pid = jsonObj.rows[i].product_id;
+                            localStorage.setItem("user_id",pid);
+                            window.location.href = "visual.ejs";
                        }
                     }
                     /*
                     else {
-                        alert("Something's wrong, please try again!");
+                    alert("Something's wrong, please try again!");
                     }
                     */
                 };
-                xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
+                xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?    uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
             }
+            
         </script>
+    
     </head>
-
+    
     <body>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <img class="profile-img" src="sens.png" alt="">
+                    <div class="account-wall">
+                    
+                        <div id="login">
+            
+                            <form name='form-login'>
+                                <span class="fontawesome-user"></span>
+                                <input type="text" id="email" placeholder="Email">    
+                                <span class="fontawesome-lock"></span>
+                                <input type="password" id="password" placeholder="Password">
+                                <p style="text-align: center;" onclick="forgot()"><u>Forgot Password</u></p>
+                                <button onClick=loadDoc()><strong>LOGIN</strong></button>
+                                <button onClick=transfer()><strong>SIGN UP</strong></button>
 
-            <img src="sens.png">
-
-        <div id="login">
-            <form name='form-login'>
-                <span class="fontawesome-user"></span>
-                <input type="text" id="email" placeholder="Email">
-
-                <span class="fontawesome-lock"></span>
-                <input type="password" id="password" placeholder="Password">
-                <p style="text-align: center;" onclick="forgot()"><u>Forgot Password ?</u></p>
-
-                <button onClick=loadDoc()><div id="ss"><strong>LOGIN</strong></div></button>
-                <button onClick=transfer()><div id="ss"><strong>SIGN UP</strong></div></button>
-
-            </form>
-            <br />
+                            </form>
+            
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
         </div>
-          </body>
+    
+        
+    </body>
+    
 </html>
