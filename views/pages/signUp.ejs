@@ -2,8 +2,14 @@
 <html>
 
     <head><title>User Register - SenS</title>
-      <link rel="icon" type="image/png" href="title_logo.png">
-      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/png" href="title_logo.png">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <style>
             img {
@@ -33,32 +39,40 @@
     </head>
 
     <body>
-            <img src="sens.png">
+        <img src="sens.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <div class="account-wall">  
+                        <div id="login">
+                            <form name='form-login'>
+                                <span class="fontawesome-user"></span>
+                                <input type="text" id="fname" placeholder="Full Name" required />
+                                <span class="fontawesome-lock"></span>
+                                <input type ="text" id="email" placeholder="Email Address" required />
+                                <span class="fontawesome-lock"></span>
+                                <input type="text" id="mob" placeholder="Mobile Number" required />
+                                <span class="fontawesome-lock"></span>
+                                <input type="text" id="loc" placeholder="Location" required />
+                                <span class="fontawesome-lock"></span>
+                                <input type="text" id="pid" placeholder="Product ID" required />
+                                <span class="fontawesome-lock"></span> <!-- noob zeeshan -->
 
-        <div id="login">
-            <form name='form-login'>
-                <span class="fontawesome-user"></span>
-                <input type="text" id="fname" placeholder="Full Name" required />
-                <span class="fontawesome-lock"></span>
-                <input type ="text" id="email" placeholder="Email Address" required />
-                <span class="fontawesome-lock"></span>
-                <input type="text" id="mob" placeholder="Mobile Number" required />
-                <span class="fontawesome-lock"></span>
-                <input type="text" id="loc" placeholder="Location" required />
-                <span class="fontawesome-lock"></span>
-                <input type="text" id="pid" placeholder="Product ID" required />
-                <span class="fontawesome-lock"></span> <!-- noob zeeshan -->
+                                <input type="password" id="pwd" placeholder="Password" required />
+                                <span class="fontawesome-lock"></span>
+                                <input type="password" id="cpwd" placeholder="Confirm Password" required /> <br />
+                                <br />
+                                <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
+                
 
-                <input type="password" id="pwd" placeholder="Password" required />
-                <span class="fontawesome-lock"></span>
-                <input type="password" id="cpwd" placeholder="Confirm Password" required /> <br />
-                <br />
-                    <div class="g-recaptcha" data-sitekey="6LfIKSsUAAAAAO2qKwRb8MWrAMAOwtLimBWu2-de" data-callback="correctCaptcha"></div>
-                <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
-                 <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
-
-            </form>
-            <br />
+                            </form>
+                            <button onClick=validReg()><div id="ss"><strong>CREATE ACCOUNT</strong></div></button>
+                            <button onClick=transfer()><div id="ss"><strong>LOGIN</strong></div></button>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
