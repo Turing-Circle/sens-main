@@ -7,7 +7,7 @@
 
 
 body {
-  background-image: url("login.png");
+  background-image: url("/login.png");
     background-position: center;
     background-size: cover;
     color : rgb(30, 30, 30);
