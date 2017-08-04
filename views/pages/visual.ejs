@@ -114,9 +114,9 @@
                 temAVG = sum_temp/12;
                 humAVG = sum_hum/12;
                 coAVG = sum_co/12;
-                document.getElementById("tempA").innerHTML = temAVG;
-                document.getElementById("humA").innerHTML = humAVG;
-                document.getElementById("coA").innerHTML = coAVG;
+                document.getElementById("tempA").innerHTML = temAVG.toFixed(2);
+                document.getElementById("humA").innerHTML = humAVG.toFixed(2);
+                document.getElementById("coA").innerHTML = coAVG.toFixed(2);
             };
             xhttp.open("GET", "http://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
             xhttp.send();
