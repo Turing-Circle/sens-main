@@ -69,13 +69,8 @@
                             window.location.href = "visual.ejs";
                        }
                     }
-                    /*
-                    else {
-                    alert("Something's wrong, please try again!");
-                    }
-                    */
                 };
-                xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?    uname="+f_email+"&pwd="+f_password, true);
+                xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
             }
             
@@ -99,10 +94,11 @@
                                 <span class="fontawesome-lock"></span>
                                 <input type="password" id="password" placeholder="Password">
                                 <p style="text-align: center;" onclick="forgot()"><u>Forgot Password</u></p>
-                                <button onClick=loadDoc()><strong>LOGIN</strong></button>
-                                <button onClick=transfer()><strong>SIGN UP</strong></button>
+                             
 
                             </form>
+                            <button onClick=loadDoc()><strong>LOGIN</strong></button>
+                            <button onClick=transfer()><strong>SIGN UP</strong></button>
             
                         </div>
                     </div>
