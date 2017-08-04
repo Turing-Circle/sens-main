@@ -118,7 +118,7 @@
                 document.getElementById("humA").innerHTML = humAVG.toFixed(2);
                 document.getElementById("coA").innerHTML = coAVG.toFixed(2);
             };
-            xhttp.open("GET", "http://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
+            xhttp.open("GET", "https://sens-agriculture.herokuapp.com/sensordata?pid="+user_id, true);
             xhttp.send();
             setTimeout(function(){
                 dataVis();
