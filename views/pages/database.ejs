@@ -1,82 +1,96 @@
 <html>
-    <head>
-        <title>Data</title>
+    <head><title>Database</title>
         
+   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- 
-        <style>
-
-            body {
-                background-color: #3e94ec;
-                font-family: "Roboto", helvetica, arial, sans-serif;
-                font-size: 16px;
-                font-weight: 400;
-                text-rendering: optimizeLegibility;
-            }
-            
-        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
-     
-
-
         <script>
             
-         
-            function loadData() {
-             
-                var i = 0;
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var jsonObj = JSON.parse(xhttp.responseText);
-                        for(i=0;i<jsonObj.rows.length;i++){
-                            
-                            document.getElementById("PID").insertAdjacentHTML('beforeend',   jsonObj.rows[i].product_id+"<br>");
-                            document.getElementById("Temp").insertAdjacentHTML('beforeend',             jsonObj.rows[i].temprature+"<br>");
-                            document.getElementById("Hum").insertAdjacentHTML('beforeend',   jsonObj.rows[i].humidity+"<br>");
-                            document.getElementById("ph").insertAdjacentHTML('beforeend',       jsonObj.rows[i].ph+"<br>");
-                            document.getElementById("co").insertAdjacentHTML('beforeend',           jsonObj.rows[i].co_leve+"<br>");
-                            document.getElementById("light").insertAdjacentHTML('beforeend',     jsonObj.rows[i].light+"<br>");
-                            document.getElementById("time").insertAdjacentHTML('beforeend',         jsonObj.rows[i].created_at+"<br>");
-                                 
-                        }
-
-                    }
-                    
-                };
+            var len = 0;
+            
+            $(document).ready(function (){
+                poll();
+            });
+            
+            function poll(){
                 
-                xhttp.open("GET", "http://sens-agriculture.herokuapp.com/db", true);
-                xhttp.send();
-                //setTimeout(loadData, 5000);
+                $.ajax({
+                    url : 'https://sens-agriculture.herokuapp.com/db',
+                    type : 'get',   
+                    success : function(data){
+                        
+                        try{
+                            
+                            var jsonObj = JSON.parse(data);
+                            console.log("try block");
+                            
+                        }catch(e){
+                            
+                            var jsonObj = data;
+                        
+                            console.log("catch block");
+                            for(i=len;i<data.rows.length;i++){
+                                $('#PID').append(data.rows[i].product_id + "<br>");
+                                $('#Temp').append(data.rows[i].temprature + "<br>");
+                                $('#Hum').append(data.rows[i].humidity + "<br>");
+                                $('#co').append(data.rows[i].co_leve + "<br>");
+                                $('#ph').append(data.rows[i].ph + "<br>");
+                                $('#light').append(data.rows[i].light + "<br>");
+                                $('#time').append(data.rows[i].created_at + "<br>");
+                            }
+                            
+                            len = data.rows.length;
+                        }
+        
+                    },
+                    
+                    error	: function (xhr, ajaxOptions, thrownError) {
+                        var errorMsg = 'Ajax request failed: ' + xhr.responseText;
+                        $('#ajaxinput').html(errorMsg);
+                    }
+         
+                });
+                setTimeout('poll()',2000);
                 
             }
-            
+                
         </script>
         
-    </head>
-    <body onLoad=loadData()>
         
-        <table>
-            <tr>
-                <th>Product ID</th>
-                <th>Temperature</th>
-                <th>Humidity</th>
-                <th>pH Level</th>
-                <th>CO Level</th>
-                <th>Light</th>
-                <th>TimeStamp</th>
-            </tr>
-            <tr>
-                <td ID="PID"></td>
-                <td ID="Temp"></td>
-                <td ID="Hum"></td>
-                <td ID="ph"></td>
-                <td ID="co"></td>
-                <td ID="light"></td>
-                <td ID="time"></td>
-            </tr>
+        
+    </head>
+    <body>
+        
+        <div class="container">
+          
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>pH Level</th>
+                        <th>CO Level</th>
+                        <th>Light</th>
+                        <th>TimeStamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ID="PID"></td>
+                        <td ID="Temp"></td>
+                        <td ID="Hum"></td>
+                        <td ID="ph"></td>
+                        <td ID="co"></td>
+                        <td ID="light"></td>
+                        <td ID="time"></td>
+                    </tr>
+                </tbody>
+            </table>
             
-        </table>
+        </div>
     </body>
 </html>
