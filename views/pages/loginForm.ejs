@@ -83,9 +83,9 @@
               //  var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
+                        var jsonObj = JSON.parse(xhttp.responseText);
                         if (jsonObj.rowCount != 0)
                         {
-                        var jsonObj = JSON.parse(xhttp.responseText);
                         for(i=0;i<jsonObj.rows.length;i++){
                             //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +         jsonObj.rows[i].product_id+"</td></tr>");
                             var pid = jsonObj.rows[i].product_id;
@@ -95,6 +95,7 @@
                     }
                     else {
                       alert("Incorrect Password, please try again or click on Reset Password");
+                      check = "";
                     }
                   }
                 };
