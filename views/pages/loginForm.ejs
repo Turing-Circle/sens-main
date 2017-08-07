@@ -55,19 +55,20 @@
                     alert("Please check your credentials as one or more fields have been left blank.");
                     return false;
                 }
+                    var check = false;
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
                             //  alert(this.responseText);
                             var jsonObj = JSON.parse(this.responseText);
                             var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
-                            if (rc == 1)
+                            if (rc != 1)
                             {
-
-                            }
-                            else {
                               alert("The email address you entered is not registered with us.\nPlease check your credentials again!");
                               return false;
+                            }
+                            else {
+                              check = true;
                             }
                         }
                     };
@@ -75,6 +76,8 @@
                     xhttp.send();
     // Request for checking Email Address END
 
+                if(check == true)
+                {
                 var i = 0;
               //  var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -91,6 +94,7 @@
                 xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
             }
+          }
 
         </script>
 
