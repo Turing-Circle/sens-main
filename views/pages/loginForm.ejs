@@ -1,19 +1,19 @@
 <html>
-    
+
     <head><title>Login</title>
-        
+
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" async defer></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" async></script>
         <link rel="icon" type="image/png" href="title_logo.png">
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        
-        
+
+
         <script>
-            
+
             function transfer(){
                 window.open("https://sens-agriculture.herokuapp.com/signUp");
                 window.close();
@@ -48,7 +48,7 @@
                     alert("Please enter your email address in the Email field");
                 }
             }
-            
+
             function loadDoc() {
                 var f_email = document.getElementById("email").value;
                 var f_password = document.getElementById("password").value;
@@ -73,41 +73,41 @@
                 xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
             }
-            
+
         </script>
-    
+
     </head>
-    
+
     <body>
-        
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-md-offset-4">
                     <img class="profile-img" src="sens.png" alt="">
                     <div class="account-wall">
-                    
+
                         <div id="login">
-            
+
                             <form name='form-login'>
                                 <span class="fontawesome-user"></span>
-                                <input type="text" id="email" placeholder="Email">    
+                                <input type="text" id="email" placeholder="Email">
                                 <span class="fontawesome-lock"></span>
                                 <input type="password" id="password" placeholder="Password">
                                 <p style="text-align: center;" onclick="forgot()"><u>Forgot Password</u></p>
-                             
+
 
                             </form>
                             <button onClick=loadDoc()><strong>LOGIN</strong></button>
                             <button onClick=transfer()><strong>SIGN UP</strong></button>
-            
+
                         </div>
                     </div>
-                
+
                 </div>
             </div>
         </div>
-    
-        
+
+
     </body>
-    
+
 </html>

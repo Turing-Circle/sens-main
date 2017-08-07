@@ -1,36 +1,36 @@
 <html>
     <head><title>Database</title>
-        
-   
+
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
         <script>
-            
+
             var len = 0;
-            
+
             $(document).ready(function (){
                 poll();
             });
-            
+
             function poll(){
-                
+
                 $.ajax({
                     url : 'https://sens-agriculture.herokuapp.com/db',
-                    type : 'get',   
+                    type : 'get',
                     success : function(data){
-                        
+
                         try{
-                            
+
                             var jsonObj = JSON.parse(data);
                             console.log("try block");
-                            
+
                         }catch(e){
-                            
+
                             var jsonObj = data;
-                        
+
                             console.log("catch block");
                             for(i=len;i<data.rows.length;i++){
                                 $('#PID').append(data.rows[i].product_id + "<br>");
@@ -41,32 +41,32 @@
                                 $('#light').append(data.rows[i].light + "<br>");
                                 $('#time').append(data.rows[i].created_at + "<br>");
                             }
-                            
+
                             len = data.rows.length;
                         }
-        
+
                     },
-                    
+
                     error	: function (xhr, ajaxOptions, thrownError) {
                         var errorMsg = 'Ajax request failed: ' + xhr.responseText;
                         $('#ajaxinput').html(errorMsg);
                     }
-         
+
                 });
                 setTimeout('poll()',2000);
-                
+
             }
-                
+
         </script>
-        
-        
-        
+
+
+
     </head>
     <body>
-        
+
         <div class="container">
-          
-            <table class="table">
+
+            <table style="border: 0.1em solid black" class="table">
                 <thead>
                     <tr>
                         <th>Product ID</th>
@@ -90,7 +90,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
         </div>
     </body>
 </html>
