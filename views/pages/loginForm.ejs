@@ -13,6 +13,7 @@
 
 
         <script>
+        var check = "";
 
             function transfer(){
                 window.open("https://sens-agriculture.herokuapp.com/signUp");
@@ -55,7 +56,6 @@
                     alert("Please check your credentials as one or more fields have been left blank.");
                     return false;
                 }
-                    var check = false;
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
@@ -66,9 +66,10 @@
                             {
                               alert("The email address you entered is not registered with us.\nPlease check your credentials again!");
                               return false;
+                              check = "";
                             }
                             else {
-                              check = true;
+                              check = "Yo";
                             }
                         }
                     };
@@ -76,12 +77,14 @@
                     xhttp.send();
     // Request for checking Email Address END
 
-                if(check == true)
+                if(check != "")
                 {
                 var i = 0;
               //  var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
+                        if (jsonObj.rowCount != 0)
+                        {
                         var jsonObj = JSON.parse(xhttp.responseText);
                         for(i=0;i<jsonObj.rows.length;i++){
                             //document.writeln("<tr><td><b>Name:</b></td><td width = 50>" +         jsonObj.rows[i].product_id+"</td></tr>");
@@ -90,6 +93,10 @@
                             window.location.href = "visual.ejs";
                        }
                     }
+                    else {
+                      alert("Incorrect Password, please try again or click on Reset Password");
+                    }
+                  }
                 };
                 xhttp.open("GET", "https://sens-agriculture.herokuapp.com/login?uname="+f_email+"&pwd="+f_password, true);
                 xhttp.send();
