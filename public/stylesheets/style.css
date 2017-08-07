@@ -108,17 +108,8 @@ input {
 }
 
 p {
-  background-color: #3b4148;
-  border-radius: 0px 3px 3px 0px;
-  color: #a9a9a9;
-  margin-bottom: 1em;
-  padding: 0 16px;
-  width: 80%;
-  height: 50px;
-  <!--
   line-height: 1.5em;
   color: #a9a9a9;
-  -->
 }
 
 after { clear: both; }
