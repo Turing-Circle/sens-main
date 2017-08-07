@@ -11,7 +11,7 @@ body {
     background-position: center;
     background-size: cover;
     color : rgb(30, 30, 30);
-  
+
     margin: 0;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 .form-signin input[type="text"]
 {
- 
+
     background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #a9a9a9;
@@ -84,7 +84,7 @@ body {
     margin: 0 auto 10px;
     display: block;
 
-    
+
 }
 .need-help
 {
@@ -181,15 +181,10 @@ button {
 .profile-img
 {
     width: 80%;
-    height: 20%;
+    height: 18%;
     margin: 0 auto 10px;
     margin-top: 15%;
     display: block;
 
-    
+
 }
-
-
-
-
-
