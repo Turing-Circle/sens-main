@@ -61,10 +61,13 @@
                             //  alert(this.responseText);
                             var jsonObj = JSON.parse(this.responseText);
                             var rc = jsonObj.rowCount; // OUTPUT = ROWCOUNT
-                            if (rc != 1)
+                            if (rc == 1)
                             {
-                                alert("The email address you entered is not registered with us.\nPlease check your credentials again!");
-                                return false;
+
+                            }
+                            else {
+                              alert("The email address you entered is not registered with us.\nPlease check your credentials again!");
+                              return false;
                             }
                         }
                     };
