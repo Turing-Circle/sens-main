@@ -11,13 +11,16 @@
         <link rel="icon" type="image/png" href="title_logo.png">
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+<!--
         <style>
+
             img {
                 width: 20%;
                 height: 20%;
                 margin-left: 41%;
                 margin-top: 1.5%;
             }
+
             body{
               background: url(bg.jpg) no-repeat;
               background-repeat: no-repeat;
@@ -32,7 +35,9 @@
                 color: #26ae90;
             }
 
+
         </style>
+          -->
         <script>
       function transfer(){window.open("https://sens-agriculture.herokuapp.com/loginForm"),window.close()}function validReg(){var e=document.getElementById("fname").value,t=document.getElementById("email").value,n=document.getElementById("mob").value,a=document.getElementById("loc").value,o=document.getElementById("pid").value,r=document.getElementById("pwd").value,l=document.getElementById("cpwd").value;if(""==e||""==t||""==n||""==a||""==o||""==r||""==l)return alert("One or more fields have been left empty. \nPlease make sure all the fields have been filled ! \n\n Thank You."),!1;if(0==r.localeCompare(l)){if(""==correctCaptcha2)return alert("Please verify yourself as a human by checking the recaptcha box !"),!1;var c=new XMLHttpRequest;c.open("GET","/register?name="+e+"&uname="+t+"&phone="+n+"&loc="+a+"&pwd="+r+"&pid="+o,!0),c.send(),alert("Thank you for signing up !\n Redirecting you to the Login Page now"),window.open("https://sens-agriculture.herokuapp.com/loginForm")}else alert("Password's don't match, please try again !")}var correctCaptcha2="",correctCaptcha=function(e){correctCaptcha2=e};
         </script>
