@@ -181,7 +181,7 @@ button {
 .profile-img
 {
     width: 80%;
-    height: 18%;
+    height: auto;
     margin: 0 auto 10px;
     margin-top: 15%;
     display: block;
