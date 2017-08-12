@@ -4,6 +4,8 @@ var app = express();
 var pg = require('pg');
 var url = require('url');
 var nodemailer = require("nodemailer");
+const bodyParser = require('body-parser');
+const webpush = require('web-push');
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -13,6 +15,43 @@ app.use(express.static(__dirname + '/public'));
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
+// WEB PUSH START
+// Parse JSON body
+app.use(bodyParser.json());
+
+app.post('/api/send-push-msg', (req, res) => {
+  const options = {
+    vapidDetails: {
+      subject: 'https://developers.google.com/web/fundamentals/',
+      publicKey: req.body.applicationKeys.public,
+      privateKey: req.body.applicationKeys.private
+    },
+    // 1 hour in seconds.
+    TTL: 60 * 60
+  };
+
+  webpush.sendNotification(
+    req.body.subscription,
+    req.body.data,
+    options
+  )
+  .then(() => {
+    res.status(200).send({success: true});
+  })
+  .catch((err) => {
+    if (err.statusCode) {
+      res.status(err.statusCode).send(err.body);
+    } else {
+      res.status(400).send(err.message);
+    }
+  });
+});
+
+app.use('/puSH', function(request, response) {
+  response.render('pages/push');
+});
+// WEB PUSH END
 
 
 app.get('/', function(request, response) {
