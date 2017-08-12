@@ -5,6 +5,12 @@
   font-family: 'FontAwesome', sans-serif;
 }
 
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 11.5px;
+    line-height: inherit;
+}
+
 
 body {
   background-image: url("/bg.jpg");
