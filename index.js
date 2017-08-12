@@ -48,7 +48,7 @@ app.post('/api/send-push-msg', (req, res) => {
   });
 });
 
-app.use('/puSH', function(request, response) {
+app.use('/push', function(request, response) {
   response.render('pages/push');
 });
 // WEB PUSH END
