@@ -51,6 +51,12 @@ app.post('/api/send-push-msg', (req, res) => {
 app.use('/push', function(request, response) {
   response.render('pages/push');
 });
+
+app.use('/pushuser', function(request, response) {
+  response.render('pages/pushuser');
+});
+
+
 // WEB PUSH END
 
 
