@@ -54,6 +54,10 @@ function sendPushMessage() {
   const publicElement = document.querySelector('.js-public-key');
   const privateElement = document.querySelector('.js-private-key');
 
+  console.log(subscriptionObject);
+    console.log(dataString);
+      console.log(publicElement.textContent);
+        console.log(privateElement.textContent);
   return fetch('/api/send-push-msg', {
     method: 'POST',
     headers: {
