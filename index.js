@@ -282,7 +282,7 @@ app.get('/pump', function(request, response){
           done();
           if (err)
           { console.error(err); response.send("Error " + err); }
-          else {response.render('pages/db');}
+          else {response.render('pages/db', {results: result.rows});}
         });
       });
     });
