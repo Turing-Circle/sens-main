@@ -294,6 +294,10 @@ app.get('/database', function(request, response) {
   response.render('pages/database');
 });
 
+app.get('/test', function(request, response) {
+  response.render('pages/test');
+});
+
 
 
 //for sending mail to in forgot password-case
