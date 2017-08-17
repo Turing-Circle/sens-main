@@ -247,15 +247,29 @@ var query1 = url.parse(request.url, true);
   var light = query1.query.uv;
 
 
+
    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('INSERT INTO test_table (product_id, temprature, humidity, ph, co_leve, light) VALUES ( \'' + product_id +'\' , \''+ temprature + ' \' , \' '+humidity+'\' , \''+ powerOfHyd+'\' , \''+co_leve+'\' , \''+light+ '\')', function(err, result) {
       done();
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.render('pages/test'); }
+       {
+         pg.connect(process.env.DATABASE_URL, function(err, client, done ){
+             client.query('SELECT * from pump', function(err, result) {
+               done();
+               if (err)
+               { console.error(err); response.send("Error " + err); }
+               else {response.render('pages/db', {results: result.rows});}
+             });
+           });
+         }
     });
   });
+
+
+
+
 });
 
 
