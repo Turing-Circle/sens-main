@@ -258,6 +258,38 @@ var query1 = url.parse(request.url, true);
   });
 });
 
+
+
+
+//pump data updatepassword
+app.get('/pump', function(request, response){
+  var queryP = url.parse(request.url, true);
+  var isON = queryP.query.isON;
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done ){
+      client.query('UPDATE pump SET response = \''+isON+'\'', function(err, result) {
+        done();
+        if (err)
+        { console.error(err); response.send("Error " + err); }
+      });
+    });
+  });
+
+  app.get('/fetch', function(request, response){
+
+    pg.connect(process.env.DATABASE_URL, function(err, client, done ){
+        client.query('SELECT * from pump ', function(err, result) {
+          done();
+          if (err)
+          { console.error(err); response.send("Error " + err); }
+          else {response.send(result);}
+        });
+      });
+    });
+
+
+
+
 /* Inserting Sensor Data via POST
 app.post('/insertData', function (request, response) {
 
