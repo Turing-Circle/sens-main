@@ -72,7 +72,7 @@ app.get('/db', function (request, response) {
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.send(result); }
+       { response.render('pages/db'); }
     });
   });
 });
