@@ -253,7 +253,7 @@ var query1 = url.parse(request.url, true);
       if (err)
        { console.error(err); response.send("Error " + err); }
       else
-       { response.send('pages/test'); }
+       { response.render('pages/test'); }
     });
   });
 });
